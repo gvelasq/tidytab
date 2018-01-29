@@ -101,16 +101,16 @@ ftab <- function(x, ..., m = TRUE) {
       x_name <- rlang::quo_name("vector")
       x <- dplyr::as_tibble(x)
       x <- dplyr::count(x, value)
-      x <- dplyr::rename(x, !!x_name := value, Freq. = n)
+      x <- dplyr::rename(x, !! x_name := value, Freq. = n)
     }
   }
   else {
     groups <- dplyr::group_vars(x)
     x <- dplyr::group_by(x, ...)
     x <- dplyr::summarize(x, Freq. = n())
-    x <- dplyr::group_by(x, !!!rlang::syms(groups))
+    x <- dplyr::group_by(x, !!! rlang::syms(groups))
   }
-  x <- dplyr::mutate(x, Percent = formatC(Freq./sum(Freq.)*100, digits = 1L, format = "f"), Cum. = formatC(cumsum(Percent), digits = 1L, format = "f"))
+  x <- dplyr::mutate(x, Percent = formatC(Freq. / sum(Freq.) * 100, digits = 1L, format = "f"), Cum. = formatC(cumsum(Percent), digits = 1L, format = "f"))
   if (ncol(x) == 4 & colnames(x)[2] == "Freq.") {
     total_freq <- formatC(sum(x[, 2]), digits = 0L, format = "f")
     x <- sapply(x, as.character)
@@ -132,7 +132,7 @@ tab1 <- function(x, ..., m = TRUE) {
   if (length(vars) == 0L) {
     ftab(x, ..., m = m)
   } else {
-    for(i in 1L:length(vars)) {
+    for (i in 1L:length(vars)) {
       tab(x = x, UQ(vars[[i]]), m = m)
       if (i < length(vars)) {
         cat("\n")
@@ -148,7 +148,7 @@ tab2 <- function(x, ..., m = TRUE) {
     x >= y
   }
   tab_sequence <- purrr::cross2(1L:length(vars), 1L:length(vars), .filter = filter)
-  for(i in 1L:length(tab_sequence)) {
+  for (i in 1L:length(tab_sequence)) {
     tab(x = x, UQ(vars[[purrr::as_vector(tab_sequence[[i]])[1]]]), UQ(vars[[purrr::as_vector(tab_sequence[[i]])[2]]]), m = m)
     cat("\n")
   }

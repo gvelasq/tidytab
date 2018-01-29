@@ -55,8 +55,10 @@ wrap_tbl <- function(tbl, M = M, M1 = M1, width = getOption("width")) {
     for (i in 2L:length(col_index)) {
       current_list <- col_index[i]
       tbl_wrapped[[current_list]] <- as.matrix(
-        paste0(as.matrix(unlist(tbl_wrapped[current_list])),
-               as.matrix(unlist(all_cols[i])))
+        paste0(
+          as.matrix(unlist(tbl_wrapped[current_list])),
+          as.matrix(unlist(all_cols[i]))
+        )
       )
     }
     for (i in 1L:length(tbl_wrapped)) {
@@ -71,8 +73,10 @@ wrap_tbl <- function(tbl, M = M, M1 = M1, width = getOption("width")) {
 statascii <- function(df, ..., flavor = "oneway", padding = "stata", pad = 1L, separators = FALSE, topvar = NULL) {
   stopifnot(is.data.frame(df))
   if (ncol(df) <= 2L & flavor == "twoway") {
-    stop("data frame must have at least three columns for 'twoway' flavor",
-         call. = FALSE)
+    stop(
+      "data frame must have at least three columns for 'twoway' flavor",
+      call. = FALSE
+    )
   }
   if (ncol(df) <= 1L) {
     stop("data frame must have at least two columns", call. = FALSE)
@@ -90,17 +94,25 @@ statascii <- function(df, ..., flavor = "oneway", padding = "stata", pad = 1L, s
   else if (padding == "none") {
   }
   add_line <- function(n, pad = 1L) {
-    tmp <- lapply(n, function(x, pad)
-      paste0(rep("\u2500", x + (2L * pad)),
-             collapse = ""),
-      pad = pad)
+    tmp <- lapply(
+      n, function(x, pad)
+        paste0(
+          rep("\u2500", x + (2L * pad)),
+          collapse = ""
+        ),
+      pad = pad
+    )
     paste0("\u2500", paste0(tmp, collapse = "\u253c"))
   }
   add_dash <- function(n, pad = 1L) {
-    tmp <- lapply(n, function(x, pad)
-      paste0(rep("-", x + (2L * pad)),
-             collapse = ""),
-      pad = pad)
+    tmp <- lapply(
+      n, function(x, pad)
+        paste0(
+          rep("-", x + (2L * pad)),
+          collapse = ""
+        ),
+      pad = pad
+    )
     paste0("-", paste0(tmp, collapse = "\u253c"))
   }
   add_row_oneway <- function(x, n, pad = 1L) {
@@ -109,10 +121,11 @@ statascii <- function(df, ..., flavor = "oneway", padding = "stata", pad = 1L, s
       sprintf(fmt, as.character(x[i]))
     }
     row_content <- sapply(seq_along(x), reformat, x = x, n = n)
-    paste0(" ",
-           paste0(paste0(rep(" ", pad), row_content[1], rep(" ", pad)), collapse = ""),
-           "\u2502",
-           paste0(paste0(rep(" ", pad), row_content[-1], rep(" ", pad)), collapse = " ")
+    paste0(
+      " ",
+      paste0(paste0(rep(" ", pad), row_content[1], rep(" ", pad)), collapse = ""),
+      "\u2502",
+      paste0(paste0(rep(" ", pad), row_content[-1], rep(" ", pad)), collapse = " ")
     )
   }
   add_row_twoway <- function(x, n, pad = 1L) {
@@ -134,12 +147,18 @@ statascii <- function(df, ..., flavor = "oneway", padding = "stata", pad = 1L, s
   })
   nchar_names <- nchar(colnames(df), keepNA = FALSE)
   M <- pmax(nchar_content, nchar_names)
-  M1 <- as.integer(c(M[1],
-                     sum(M[2:(length(M))]) + (3L * ncol(df)) - 6L))
-  M2 <- as.integer(c(M[1] - 1L,
-                     sum(M[2:(length(M) - 1L)],
-                     (2L * ncol(df)) - 6L),
-                     M[length(M)] - 1L))
+  M1 <- as.integer(c(
+    M[1],
+    sum(M[2:(length(M))]) + (3L * ncol(df)) - 6L
+  ))
+  M2 <- as.integer(c(
+    M[1] - 1L,
+    sum(
+      M[2:(length(M) - 1L)],
+      (2L * ncol(df)) - 6L
+    ),
+    M[length(M)] - 1L
+  ))
   if (flavor == "oneway") {
     table_line <- add_line(M1, pad = pad)
     group_dashes <- add_dash(M1, pad = pad)
