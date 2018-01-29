@@ -1,22 +1,24 @@
 Package: tabr
-Version: 0.0.0.9000
 Title: Create Tables of Frequencies
-Description: Functions to create tables of frequencies.
+Version: 0.0.0.9000
 Authors@R: person("Gustavo","Velásquez", email = "gvelasq2github@gmail.com", role = c("aut", "cre"))
 Author: Gustavo Velásquez <gvelasq2github@gmail.com>
 Maintainer: Gustavo Velásquez <gvelasq2github@gmail.com>
+Description: Functions to create tables of frequencies.
 License: MIT + file LICENSE
-Encoding: UTF-8
-LazyData: true
-RoxygenNote: 6.0.1
-ByteCompile: true
+Depends: 
+    R (>= 3.1)
 Imports: 
-    rlang (>= 0.1.2),
+    dplyr,
     magrittr,
     purrr,
-    dplyr,
+    rlang (>= 0.1.2),
     stringr
-Roxygen: list(markdown = TRUE)
 Suggests: 
-    testthat,
-    covr
+    covr,
+    testthat
+ByteCompile: true
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1
