@@ -1,0 +1,63 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# tabr
+
+Create tables of frequencies
+
+[![CRAN status](http://www.r-pkg.org/badges/version/tabr)](https://cran.r-project.org/package=tabr)
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+
+## Installation
+
+You can install statascii from GitHub with:
+
+```{r gh-installation, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("gvelasq2/tabr")
+```
+
+## Usage
+
+```{r example, message = FALSE}
+# setup
+library(dplyr)
+library(tabr)
+
+# one-way table of frequencies
+mtcars %>% tab(cyl)
+
+# two-way table of frequencies (a 2x2 contingency table)
+mtcars %>% tab(cyl, gear)
+
+# flat contingency tables of three or more variables
+mtcars %>% tab(cyl, gear, am)
+mtcars %>% tab(cyl, gear, am, vs)
+
+# ftab() creates only flat contingency tables (here, with two variables)
+mtcars %>% ftab(cyl, gear)
+
+# tab1() produces one-way tables for each variable
+mtcars %>% tab1(cyl, gear)
+
+# tab2() creates two-way tables for all variable combinations
+mtcars %>% tab2(cyl, gear, am)
+
+# ta() is an even shorter alias for tab(), inspired by Stata
+mtcars %>% ta(gear)
+```
+
+---
+Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+By participating in this project you agree to abide by its terms.
