@@ -10,7 +10,7 @@ Create tables of frequencies
 Installation
 ------------
 
-You can install statascii from GitHub with:
+You can install tabr from GitHub with:
 
 ``` r
 # install.packages("devtools")
