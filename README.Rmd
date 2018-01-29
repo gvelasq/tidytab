@@ -43,6 +43,7 @@ mtcars %>% tab(cyl, gear)
 
 # flat contingency tables of three or more variables
 mtcars %>% tab(cyl, gear, am)
+
 mtcars %>% tab(cyl, gear, am, vs)
 
 # ftab() creates only flat contingency tables (here, with two variables)
