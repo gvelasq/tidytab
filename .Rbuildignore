@@ -6,3 +6,5 @@
 ^cran-comments\.md$
 ^_pkgdown\.yml$
 ^docs$
+^\.travis\.yml$
+^codecov\.yml$

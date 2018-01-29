@@ -18,4 +18,5 @@ Imports:
     stringr
 Roxygen: list(markdown = TRUE)
 Suggests: 
-    testthat
+    testthat,
+    covr
