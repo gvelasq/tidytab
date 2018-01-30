@@ -78,11 +78,14 @@
 tab <- function(x, ..., m = TRUE) {
   vars <- rlang::quos(...)
   if (length(vars) == 0L | length(vars) == 1L | length(vars) > 2L) {
-    ftab(x, ..., m = m)
+    # ftab(x, ..., m = m)
+    df_to_return <- ftab(x, ..., m = m)
   }
   if (length(vars) == 2L) {
-    ctab(x, ..., m = m)
+    # ctab(x, ..., m = m)
+    df_to_return <- ctab(x, ..., m = m)
   }
+  invisible(df_to_return)
 }
 
 #' @export
@@ -111,6 +114,7 @@ ftab <- function(x, ..., m = TRUE) {
     x <- dplyr::group_by(x, !!! rlang::syms(groups))
   }
   x <- dplyr::mutate(x, Percent = formatC(Freq. / sum(Freq.) * 100, digits = 1L, format = "f"), Cum. = formatC(cumsum(Percent), digits = 1L, format = "f"))
+  df_to_return <- x
   if (ncol(x) == 4 & colnames(x)[2] == "Freq.") {
     total_freq <- formatC(sum(x[, 2]), digits = 0L, format = "f")
     x <- sapply(x, as.character)
@@ -123,7 +127,7 @@ ftab <- function(x, ..., m = TRUE) {
     x <- dplyr::as_tibble(x)
     statascii(x, flavor = "summary", separators = TRUE)
   }
-  invisible(x)
+  invisible(df_to_return)
 }
 
 #' @export
