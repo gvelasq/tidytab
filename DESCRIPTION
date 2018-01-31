@@ -7,7 +7,7 @@ Maintainer: Gustavo Velásquez <gvelasq2github@gmail.com>
 Description: Functions to create tables of frequencies.
 License: MIT + file LICENSE
 Depends: 
-    R (>= 3.1)
+    R (>= 3.2)
 Imports: 
     dplyr,
     magrittr,
