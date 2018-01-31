@@ -20,6 +20,9 @@
 #' # %gin% evaluates to TRUE
 #' "t" %gin% "tonic"
 #'
+#' # %gin% can be used with tab()
+#' tab("Toyota" %gin% rownames(mtcars))
+#'
 #' @references
 #' \code{\%gin\%} was first written for [@ivelasq](https://github.com/ivelasq)'s [r-data-recipes](https://github.com/ivelasq/r-data-recipes) GitHub repository.
 #'
