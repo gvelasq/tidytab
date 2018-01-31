@@ -16,7 +16,8 @@ test_that("tab(), ftab(), ctab(), ta(), tab1(), and tab2() throw errors without 
 
 test_that("tab(), ftab(), ctab(), and ta() invisibly return tibbles", {
   a <- mtcars
-  a$vs[1] <- NA; a$am[2] <- NA
+  a$vs[1] <- NA
+  a$am[2] <- NA
 
   expect_true(is_tibble(tab(mtcars$vs)))
   expect_true(is_tibble(tab(mtcars, vs)))
@@ -49,7 +50,9 @@ test_that("tab(), ftab(), ctab(), and ta() invisibly return tibbles", {
 
 test_that("tab1() and tab2() work", {
   a <- mtcars
-  a$vs[1] <- NA; a$am[2] <- NA; a$gear[3] <- NA
+  a$vs[1] <- NA
+  a$am[2] <- NA
+  a$gear[3] <- NA
 
   expect_true(is_tibble(tab1(mtcars$vs)))
   expect_true(is_null(tab1(mtcars, vs)))
