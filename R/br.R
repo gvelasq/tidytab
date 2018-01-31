@@ -1,6 +1,6 @@
 #' Browse data
 #'
-#' @description `br()` is an alias for `utils::View()` and invokes the data viewer. See \code{utils::\link[View]{View()}} for details.
+#' @description `br()` is an alias for `utils::View()` and invokes the data viewer. See `utils::View()` for details.
 #'
 #' @usage
 #' br(x, title)
@@ -10,5 +10,5 @@
 #'
 #' @export
 br <- function(x, title) {
-  View(x, title)
+  utils::View(x, title)
 }

@@ -15,5 +15,7 @@
 #'
 #' @importFrom stats na.omit
 #' @importFrom stringr str_pad str_sub
+#' @importFrom tibble as_tibble
+#' @importFrom tidyr spread
 #' @importFrom utils capture.output View
 NULL

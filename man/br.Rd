@@ -12,5 +12,5 @@ br(x, title)
 \item{title}{Optional title for viewer window.}
 }
 \description{
-\code{br()} is an alias for \code{utils::View()} and invokes the data viewer. See \code{utils::\link[View]{View()}} for details.
+\code{br()} is an alias for \code{utils::View()} and invokes the data viewer. See \code{utils::View()} for details.
 }

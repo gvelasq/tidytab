@@ -78,19 +78,17 @@
 tab <- function(x, ..., m = TRUE) {
   vars <- rlang::quos(...)
   if (length(vars) == 0L | length(vars) == 1L | length(vars) > 2L) {
-    # ftab(x, ..., m = m)
     df_to_return <- ftab(x, ..., m = m)
   }
   if (length(vars) == 2L) {
-    # ctab(x, ..., m = m)
     df_to_return <- ctab(x, ..., m = m)
   }
   invisible(df_to_return)
 }
 
 #' @export
-ta <- function(...) {
-  tab(...)
+ta <- function(x, ..., m = TRUE) {
+  tab(x, ..., m = m)
 }
 
 #' @export
@@ -155,32 +153,5 @@ tab2 <- function(x, ..., m = TRUE) {
   for (i in 1L:length(tab_sequence)) {
     tab(x = x, UQ(vars[[purrr::as_vector(tab_sequence[[i]])[1]]]), UQ(vars[[purrr::as_vector(tab_sequence[[i]])[2]]]), m = m)
     cat("\n")
-  }
-}
-
-ctab <- function(x, ..., m = TRUE) {
-  vars <- rlang::quos(...)
-  if (length(vars) == 2L) {
-    x <- dplyr::count(x, ...)
-    if (m == FALSE) {
-      x <- na.omit(x)
-    }
-    topvar <- rlang::quo_name(colnames(x[2]))
-    x <- tidyr::spread(x, 2, 3, fill = 0L)
-    colnames(x) <- stringr::str_replace(colnames(x), "<NA>", "NA")
-    df_to_return <- tibble::as_tibble(x)
-    attr(df_to_return, "topvar") <- topvar
-    total_col <- rowSums(x[-1L], na.rm = TRUE)
-    x <- cbind(x, total_col)
-    total_row <- colSums(x[-1L], na.rm = TRUE)
-    total_row <- c(NA, total_row)
-    x <- rbind(x, total_row)
-    x <- purrr::map_df(x, as.character)
-    x[nrow(x), 1] <- "Total"
-    colnames(x)[ncol(x)] <- "Total"
-    statascii(x, flavor = "contingency", topvar = topvar)
-    invisible(df_to_return)
-  } else {
-    stop("ctab() must have exactly two variables for a 2x2 contingency table")
   }
 }
