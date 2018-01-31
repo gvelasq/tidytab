@@ -147,9 +147,17 @@ statascii <- function(df, ..., flavor = "oneway", padding = "stata", separators 
     )
   }
   nchar_content <- apply(df, 2, function(x) {
-    max(nchar(x, keepNA = FALSE))
+    if(getRversion() <= "3.2.0") {
+      max(nchar(x, type = "width"))
+    } else {
+      max(nchar(x, keepNA = FALSE))
+    }
   })
-  nchar_names <- nchar(colnames(df), keepNA = FALSE)
+  if(getRversion() <= "3.2.0") {
+    nchar_names <- nchar(colnames(df), type = "width")
+  } else {
+    nchar_names <- nchar(colnames(df), keepNA = FALSE)
+  }
   M <- pmax(nchar_content, nchar_names)
   M1 <- as.integer(c(
     M[1],
