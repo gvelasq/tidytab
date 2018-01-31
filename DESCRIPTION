@@ -12,7 +12,7 @@ Imports:
     dplyr,
     magrittr,
     purrr,
-    rlang (>= 0.1.2),
+    rlang,
     stringr
 Suggests: 
     covr,
@@ -22,3 +22,4 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
+Remotes: tidyverse/rlang
