@@ -184,13 +184,3 @@ ctab <- function(x, ..., m = TRUE) {
     stop("ctab() must have exactly two variables for a 2x2 contingency table")
   }
 }
-
-#' @export
-br <- function(...) {
-  View(...)
-}
-
-#' @export
-"%gin%" <- function(pattern, x) {
-  grepl(pattern, x)
-}
