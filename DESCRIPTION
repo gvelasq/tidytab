@@ -13,7 +13,8 @@ Imports:
     magrittr,
     purrr,
     rlang,
-    stringr
+    stringr,
+    tidyr
 Suggests: 
     covr,
     testthat
