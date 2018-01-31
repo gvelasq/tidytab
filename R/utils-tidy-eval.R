@@ -13,8 +13,7 @@
 #' @export           quo quos enquo sym syms ensym expr exprs enexpr quo_name
 #' @importFrom rlang UQ UQS .data := %|%
 #'
-#' @importFrom stringr str_pad
-#' @importFrom stringr str_sub
-#' @importFrom utils capture.output
-#' @importFrom tidyr spread
+#' @importFrom stats na.omit
+#' @importFrom stringr str_pad str_sub
+#' @importFrom utils capture.output View
 NULL
