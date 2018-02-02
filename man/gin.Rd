@@ -21,6 +21,9 @@ pattern \%gin\% x
 # \%gin\% evaluates to TRUE
 "t" \%gin\% "tonic"
 
+# \%gin\% can be used with tab()
+tab("Toyota" \%gin\% rownames(mtcars))
+
 }
 \references{
 \code{\%gin\%} was first written for \href{https://github.com/ivelasq}{@ivelasq}'s \href{https://github.com/ivelasq/r-data-recipes}{r-data-recipes} GitHub repository.

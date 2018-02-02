@@ -8,10 +8,6 @@
 #' @param x An `R` object coercible into a data frame.
 #' @param title Optional title for viewer window.
 #'
-#' @examples
-#' mtcars$vs %>% br()
-#' mtcars %>% br()
-#'
 #' @export
 br <- function(x, title) {
   View(x, title)
