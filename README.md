@@ -5,7 +5,7 @@ tabr
 
 Create tables of frequencies
 
-[![Travis build status](https://travis-ci.org/gvelasq2/tabr.svg?branch=master)](https://travis-ci.org/gvelasq2/tabr) [![Coverage status](https://codecov.io/gh/gvelasq2/tabr/branch/master/graph/badge.svg)](https://codecov.io/github/gvelasq2/tabr?branch=master) [![CRAN status](http://www.r-pkg.org/badges/version/tabr)](https://cran.r-project.org/package=tabr) [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Travis build status](https://travis-ci.org/gvelasq-r/tabr.svg?branch=master)](https://travis-ci.org/gvelasq-r/tabr) [![Coverage status](https://codecov.io/gh/gvelasq-r/tabr/branch/master/graph/badge.svg)](https://codecov.io/github/gvelasq-r/tabr?branch=master) [![CRAN status](http://www.r-pkg.org/badges/version/tabr)](https://cran.r-project.org/package=tabr) [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 Installation
 ------------
@@ -14,7 +14,7 @@ You can install tabr from GitHub with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("gvelasq2/tabr")
+devtools::install_github("gvelasq-r/tabr")
 ```
 
 Usage
