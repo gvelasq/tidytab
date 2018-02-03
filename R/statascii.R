@@ -1,3 +1,6 @@
+#' @keywords internal
+#'
+#' @export statascii
 statascii <- function(df, ..., flavor = "oneway", padding = "stata", separators = FALSE, topvar = NULL) {
   stopifnot(is.data.frame(df))
   if (ncol(df) <= 2L & flavor == "twoway") {

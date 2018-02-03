@@ -15,7 +15,9 @@ Imports:
     rlang,
     stringr,
     tibble,
-    tidyr
+    tidyr,
+    here,
+    readr
 Suggests: 
     covr,
     testthat
