@@ -35,7 +35,7 @@
 #' A tibble containing a table of frequencies for the variables listed in `...`
 #'
 #' @seealso
-#' `statar::tab()` by Matthieu Gomez is similar to `tabr::ftab()` yet is implemented differently and provides different arguments. Like `tabr`, `statar` uses a variant of [`statascii()`](https://github.com/gvelasq2/statascii) to format tables for display in the `R` console.
+#' `statar::tab()` by Matthieu Gomez is similar to `tabr::ftab()` yet is implemented differently and provides different arguments. Like `tabr`, `statar` uses a variant of [`statascii()`](https://github.com/gvelasq-r/statascii) to format tables for display in the `R` console.
 #'
 #' `janitor::tabyl()` creates SPSS-like tabulations and adornments that are displayed using `tibble::tibble()` in the `R` console.
 #'

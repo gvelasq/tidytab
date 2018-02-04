@@ -72,7 +72,7 @@ mtcars \%>\% ta(gear)
 
 }
 \seealso{
-\code{statar::tab()} by Matthieu Gomez is similar to \code{tabr::ftab()} yet is implemented differently and provides different arguments. Like \code{tabr}, \code{statar} uses a variant of \href{https://github.com/gvelasq2/statascii}{statascii()} to format tables for display in the \code{R} console.
+\code{statar::tab()} by Matthieu Gomez is similar to \code{tabr::ftab()} yet is implemented differently and provides different arguments. Like \code{tabr}, \code{statar} uses a variant of \href{https://github.com/gvelasq-r/statascii}{statascii()} to format tables for display in the \code{R} console.
 
 \code{janitor::tabyl()} creates SPSS-like tabulations and adornments that are displayed using \code{tibble::tibble()} in the \code{R} console.
 
