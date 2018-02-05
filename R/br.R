@@ -10,5 +10,5 @@
 #'
 #' @export
 br <- function(x, title) {
-  View(x, title)
+  get("View", envir = as.environment("package:utils"))(x, title)
 }
