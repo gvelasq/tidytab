@@ -45,26 +45,28 @@
 #' # setup
 #' library(dplyr)
 #'
-#' # one-way table of frequencies
+#' # one-way table of frequencies with totals
 #' mtcars %>% tab(cyl)
 #'
-#' # two-way table of frequencies (a 2x2 contingency table)
+#' # two-way table of frequencies (a 2x2 contingency table) with totals
 #' mtcars %>% tab(cyl, gear)
 #'
-#' # flat contingency tables of three or more variables
+#' # flat contingency tables of three (or more) variables
 #' mtcars %>% tab(cyl, gear, am)
+#'
+#' # all tables wider than the R console are automatically wrapped
 #' mtcars %>% tab(cyl, gear, am, vs)
 #'
-#' # ftab() creates only flat contingency tables (here, with two variables)
+#' # ftab() displays only flat contingency tables (here, with two variables)
 #' mtcars %>% ftab(cyl, gear)
 #'
-#' # tab1() produces one-way tables for each variable
+#' # tab1() displays one-way tables for each variable
 #' mtcars %>% tab1(cyl, gear)
 #'
-#' # tab2() creates two-way tables for all variable combinations
+#' # tab2() displays two-way tables for all variable combinations
 #' mtcars %>% tab2(cyl, gear, am)
 #'
-#' # ta() is an even shorter alias for tab(), inspired by Stata
+#' # ta() is a shortened alias for tab(), inspired by Stata
 #' mtcars %>% ta(gear)
 #'
 #' @aliases
