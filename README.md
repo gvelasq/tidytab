@@ -25,7 +25,7 @@ Usage
 library(dplyr)
 library(tabr)
 
-# one-way table of frequencies
+# one-way table of frequencies with totals
 mtcars %>% tab(cyl)
 #>         cyl │     Freq.     Percent        Cum. 
 #> ────────────┼───────────────────────────────────
@@ -35,7 +35,7 @@ mtcars %>% tab(cyl)
 #> ────────────┼───────────────────────────────────
 #>       Total │        32       100.0           
 
-# two-way table of frequencies (a 2x2 contingency table)
+# two-way table of frequencies (a 2x2 contingency table) with totals
 mtcars %>% tab(cyl, gear)
 #>            │      gear                       │           
 #>        cyl │         3          4          5 │     Total 
@@ -46,7 +46,7 @@ mtcars %>% tab(cyl, gear)
 #> ───────────┼─────────────────────────────────┼──────────
 #>      Total │        15         12          5 │        32
 
-# flat contingency tables of three or more variables
+# flat contingency tables of three (or more) variables
 mtcars %>% tab(cyl, gear, am)
 #>         cyl │      gear          am       Freq.     Percent        Cum. 
 #> ────────────┼───────────────────────────────────────────────────────────
@@ -63,6 +63,7 @@ mtcars %>% tab(cyl, gear, am)
 #>           8 │         3           0          12        37.5        93.5 
 #>           8 │         5           1           2         6.2        99.7
 
+# all tables wider than the R console are automatically wrapped
 mtcars %>% tab(cyl, gear, am, vs)
 #>         cyl │      gear          am          vs       Freq.     Percent 
 #> ────────────┼───────────────────────────────────────────────────────────
@@ -96,7 +97,7 @@ mtcars %>% tab(cyl, gear, am, vs)
 #>           8 │       93.5 
 #>           8 │       99.7
 
-# ftab() creates only flat contingency tables (here, with two variables)
+# ftab() displays only flat contingency tables (here, with two variables)
 mtcars %>% ftab(cyl, gear)
 #>         cyl │      gear       Freq.     Percent        Cum. 
 #> ────────────┼───────────────────────────────────────────────
@@ -111,7 +112,7 @@ mtcars %>% ftab(cyl, gear)
 #>           8 │         3          12        37.5        93.6 
 #>           8 │         5           2         6.2        99.8
 
-# tab1() produces one-way tables for each variable
+# tab1() displays one-way tables for each variable
 mtcars %>% tab1(cyl, gear)
 #>         cyl │     Freq.     Percent        Cum. 
 #> ────────────┼───────────────────────────────────
@@ -129,7 +130,7 @@ mtcars %>% tab1(cyl, gear)
 #> ────────────┼───────────────────────────────────
 #>       Total │        32       100.0           
 
-# tab2() creates two-way tables for all variable combinations
+# tab2() displays two-way tables for all variable combinations
 mtcars %>% tab2(cyl, gear, am)
 #>            │      gear                       │           
 #>        cyl │         3          4          5 │     Total 
@@ -158,7 +159,7 @@ mtcars %>% tab2(cyl, gear, am)
 #> ───────────┼──────────────────────┼──────────
 #>      Total │        19         13 │        32
 
-# ta() is an even shorter alias for tab(), inspired by Stata
+# ta() is a shortened alias for tab(), inspired by Stata
 mtcars %>% ta(gear)
 #>        gear │     Freq.     Percent        Cum. 
 #> ────────────┼───────────────────────────────────
