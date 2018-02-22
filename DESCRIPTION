@@ -10,20 +10,19 @@ Depends:
     R (>= 3.2)
 Imports: 
     dplyr,
+    here,
     magrittr,
     purrr,
-    rlang,
+    readr,
+    rlang (>= 0.2.0),
     stringr,
     tibble,
-    tidyr,
-    here,
-    readr
+    tidyr
 Suggests: 
     covr,
     testthat
 ByteCompile: true
 Encoding: UTF-8
 LazyData: true
-Remotes: tidyverse/rlang
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
