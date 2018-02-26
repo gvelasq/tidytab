@@ -48,16 +48,16 @@ Invisibly returned tibbles exclude total rows and columns to avoid collision of 
 # setup
 library(dplyr)
 
-# one-way table of frequencies with totals
+# one-way table of frequencies
 mtcars \%>\% tab(cyl)
 
-# two-way table of frequencies (a 2x2 contingency table) with totals
+# two-way table of frequencies (a 2x2 contingency table)
 mtcars \%>\% tab(cyl, gear)
 
 # flat contingency tables of three (or more) variables
 mtcars \%>\% tab(cyl, gear, am)
 
-# all tables wider than the R console are automatically wrapped
+# tables wider than the R console are automatically wrapped
 mtcars \%>\% tab(cyl, gear, am, vs)
 
 # ftab() displays only flat contingency tables (here, with two variables)

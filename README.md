@@ -5,7 +5,7 @@ tabr
 
 Create tables of frequencies
 
-[![Travis build status](https://travis-ci.org/gvelasq-r/tabr.svg?branch=master)](https://travis-ci.org/gvelasq-r/tabr) [![Coverage status](https://codecov.io/gh/gvelasq-r/tabr/branch/master/graph/badge.svg)](https://codecov.io/github/gvelasq-r/tabr?branch=master) [![CRAN status](http://www.r-pkg.org/badges/version/tabr)](https://cran.r-project.org/package=tabr) [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Travis build status](https://travis-ci.org/gvelasq-r/tabr.svg?branch=master)](https://travis-ci.org/gvelasq-r/tabr) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/gvelasq2/tabr?branch=master&svg=true)](https://ci.appveyor.com/project/gvelasq2/tabr) [![Coverage status](https://codecov.io/gh/gvelasq-r/tabr/branch/master/graph/badge.svg)](https://codecov.io/github/gvelasq-r/tabr?branch=master) [![CRAN status](https://www.r-pkg.org/badges/version/tabr)](https://cran.r-project.org/package=tabr) [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 Installation
 ------------
@@ -25,7 +25,7 @@ Usage
 library(dplyr)
 library(tabr)
 
-# one-way table of frequencies with totals
+# one-way table of frequencies
 mtcars %>% tab(cyl)
 #>         cyl │     Freq.     Percent        Cum. 
 #> ────────────┼───────────────────────────────────
@@ -35,7 +35,7 @@ mtcars %>% tab(cyl)
 #> ────────────┼───────────────────────────────────
 #>       Total │        32       100.0           
 
-# two-way table of frequencies (a 2x2 contingency table) with totals
+# two-way table of frequencies (a 2x2 contingency table)
 mtcars %>% tab(cyl, gear)
 #>            │      gear                       │           
 #>        cyl │         3          4          5 │     Total 
@@ -63,7 +63,7 @@ mtcars %>% tab(cyl, gear, am)
 #>           8 │         3           0          12        37.5        93.5 
 #>           8 │         5           1           2         6.2        99.7
 
-# all tables wider than the R console are automatically wrapped
+# tables wider than the R console are automatically wrapped
 mtcars %>% tab(cyl, gear, am, vs)
 #>         cyl │      gear          am          vs       Freq.     Percent 
 #> ────────────┼───────────────────────────────────────────────────────────

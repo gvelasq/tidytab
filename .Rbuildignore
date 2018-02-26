@@ -10,3 +10,4 @@
 ^codecov\.yml$
 ^CONTRIBUTING\.md$
 ^ISSUE_TEMPLATE\.md$
+^appveyor\.yml$

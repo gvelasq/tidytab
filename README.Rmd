@@ -17,8 +17,9 @@ knitr::opts_chunk$set(
 Create tables of frequencies
 
 [![Travis build status](https://travis-ci.org/gvelasq-r/tabr.svg?branch=master)](https://travis-ci.org/gvelasq-r/tabr)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/gvelasq2/tabr?branch=master&svg=true)](https://ci.appveyor.com/project/gvelasq2/tabr)
 [![Coverage status](https://codecov.io/gh/gvelasq-r/tabr/branch/master/graph/badge.svg)](https://codecov.io/github/gvelasq-r/tabr?branch=master)
-[![CRAN status](http://www.r-pkg.org/badges/version/tabr)](https://cran.r-project.org/package=tabr)
+[![CRAN status](https://www.r-pkg.org/badges/version/tabr)](https://cran.r-project.org/package=tabr)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 ## Installation
@@ -37,16 +38,16 @@ devtools::install_github("gvelasq-r/tabr")
 library(dplyr)
 library(tabr)
 
-# one-way table of frequencies with totals
+# one-way table of frequencies
 mtcars %>% tab(cyl)
 
-# two-way table of frequencies (a 2x2 contingency table) with totals
+# two-way table of frequencies (a 2x2 contingency table)
 mtcars %>% tab(cyl, gear)
 
 # flat contingency tables of three (or more) variables
 mtcars %>% tab(cyl, gear, am)
 
-# all tables wider than the R console are automatically wrapped
+# tables wider than the R console are automatically wrapped
 mtcars %>% tab(cyl, gear, am, vs)
 
 # ftab() displays only flat contingency tables (here, with two variables)
