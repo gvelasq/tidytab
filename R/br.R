@@ -10,8 +10,8 @@
 #'
 #' @export
 br <- function(x, title) {
-  x_expr <- quo_name(enexpr(x))
-  title_expr <- quo_name(enexpr(title))
+  x_expr <- rlang::quo_name(rlang::enexpr(x))
+  title_expr <- rlang::quo_name(rlang::enexpr(title))
   if(title_expr == "") {
     get("View", envir = as.environment("package:utils"))(x, title = x_expr)
   } else {
