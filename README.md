@@ -5,7 +5,7 @@ tabr
 
 Create tables of frequencies
 
-[![Travis build status](https://travis-ci.org/gvelasq-r/tabr.svg?branch=master)](https://travis-ci.org/gvelasq-r/tabr) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/gvelasq2/tabr?branch=master&svg=true)](https://ci.appveyor.com/project/gvelasq2/tabr) [![Coverage status](https://codecov.io/gh/gvelasq-r/tabr/branch/master/graph/badge.svg)](https://codecov.io/github/gvelasq-r/tabr?branch=master) [![CRAN status](https://www.r-pkg.org/badges/version/tabr)](https://cran.r-project.org/package=tabr) [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Travis build status](https://travis-ci.org/gvelasq-r/tabr.svg?branch=master)](https://travis-ci.org/gvelasq-r/tabr) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/gvelasq-r/tabr?branch=master&svg=true)](https://ci.appveyor.com/project/gvelasq-r/tabr) [![Coverage status](https://codecov.io/gh/gvelasq-r/tabr/branch/master/graph/badge.svg)](https://codecov.io/github/gvelasq-r/tabr?branch=master) [![CRAN status](https://www.r-pkg.org/badges/version/tabr)](https://cran.r-project.org/package=tabr) [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 Installation
 ------------
@@ -21,8 +21,7 @@ Usage
 -----
 
 ``` r
-# setup
-library(dplyr)
+# setup (note that tabr automatically imports the magrittr pipe)
 library(tabr)
 
 # one-way table of frequencies
