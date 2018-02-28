@@ -45,9 +45,6 @@ If three or more variables are passed to \code{tab()}, a flat contingency table 
 Invisibly returned tibbles exclude total rows and columns to avoid collision of variable classes.
 }
 \examples{
-# setup
-library(dplyr)
-
 # one-way table of frequencies
 mtcars \%>\% tab(cyl)
 

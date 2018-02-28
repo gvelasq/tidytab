@@ -42,9 +42,6 @@
 #' `base::ftable()`, `stats::xtabs()` are base `R` solutions for creating tables of frequencies.
 #'
 #' @examples
-#' # setup
-#' library(dplyr)
-#'
 #' # one-way table of frequencies
 #' mtcars %>% tab(cyl)
 #'
