@@ -10,5 +10,11 @@
 #'
 #' @export
 br <- function(x, title) {
-  get("View", envir = as.environment("package:utils"))(x, title)
+  x_expr <- quo_name(enexpr(x))
+  title_expr <- quo_name(enexpr(title))
+  if(title_expr == "") {
+    get("View", envir = as.environment("package:utils"))(x, title = x_expr)
+  } else {
+    get("View", envir = as.environment("package:utils"))(x, title = title_expr)
+  }
 }
