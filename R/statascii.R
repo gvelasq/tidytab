@@ -101,25 +101,25 @@ statascii <- function(df, ..., flavor = "oneway", padding = "stata", separators 
     table_line <- add_line(M1, pad = 1L)
     group_dashes <- add_dash(M1, pad = 1L)
     table_captured <-
-      utils::capture.output(writeLines(add_row_oneway(colnames(df), M, pad = 1L)))
+      utils::capture.output(writeLines(add_row_oneway(colnames(df), M, pad = 1L), useBytes = TRUE))
     table_captured <-
-      as.matrix(rbind(table_captured, utils::capture.output(writeLines(table_line))))
+      as.matrix(rbind(table_captured, utils::capture.output(writeLines(table_line, useBytes = TRUE))))
     total_line <- nrow(df) - 1L
     for (i in seq_len(nrow(df))) {
       table_captured <-
-        as.matrix(rbind(table_captured, utils::capture.output(writeLines(add_row_oneway(df[i, ], M, pad = 1L)))))
+        as.matrix(rbind(table_captured, utils::capture.output(writeLines(add_row_oneway(df[i, ], M, pad = 1L), useBytes = TRUE))))
       if (i > 0L & i < total_line) {
         if (separators) {
           df <- df %|% "NA"
           if (df[i, 1] != df[i + 1L, 1]) {
             table_captured <-
-              as.matrix(rbind(table_captured, utils::capture.output(writeLines(group_dashes))))
+              as.matrix(rbind(table_captured, utils::capture.output(writeLines(group_dashes, useBytes = TRUE))))
           }
         }
       }
       if (i == total_line) {
         table_captured <-
-          as.matrix(rbind(table_captured, utils::capture.output(writeLines(table_line))))
+          as.matrix(rbind(table_captured, utils::capture.output(writeLines(table_line, useBytes = TRUE))))
       }
     }
     wrap_tbl(table_captured, M = M, M1 = M1)
@@ -128,25 +128,25 @@ statascii <- function(df, ..., flavor = "oneway", padding = "stata", separators 
     table_line <- add_line(M2, pad = 1L)
     group_dashes <- add_dash(M2, pad = 1L)
     table_captured <-
-      utils::capture.output(writeLines(add_row_twoway(colnames(df), M, pad = 1L)))
+      utils::capture.output(writeLines(add_row_twoway(colnames(df), M, pad = 1L), useBytes = TRUE))
     table_captured <-
-      as.matrix(rbind(table_captured, utils::capture.output(writeLines(table_line))))
+      as.matrix(rbind(table_captured, utils::capture.output(writeLines(table_line, useBytes = TRUE))))
     total_line <- nrow(df) - 1L
     for (i in seq_len(nrow(df))) {
       table_captured <-
-        as.matrix(rbind(table_captured, utils::capture.output(writeLines(add_row_twoway(df[i, ], M, pad = 1L)))))
+        as.matrix(rbind(table_captured, utils::capture.output(writeLines(add_row_twoway(df[i, ], M, pad = 1L), useBytes = TRUE))))
       if (i > 0L & i < total_line) {
         if (separators) {
           df <- df %|% "NA"
           if (df[i, 1] != df[i + 1L, 1]) {
             table_captured <-
-              as.matrix(rbind(table_captured, utils::capture.output(writeLines(group_dashes))))
+              as.matrix(rbind(table_captured, utils::capture.output(writeLines(group_dashes, useBytes = TRUE))))
           }
         }
       }
       if (i == total_line) {
         table_captured <-
-          as.matrix(rbind(table_captured, utils::capture.output(writeLines(table_line))))
+          as.matrix(rbind(table_captured, utils::capture.output(writeLines(table_line, useBytes = TRUE))))
       }
     }
     wrap_tbl(table_captured, M = M, M1 = M1)
@@ -156,27 +156,27 @@ statascii <- function(df, ..., flavor = "oneway", padding = "stata", separators 
     group_dashes <- add_dash(M2, pad = 1L)
     top_row <- vector(mode = "character", length = length(colnames(df)))
     top_row[2] <- topvar
-    top_row_captured <- utils::capture.output(writeLines(add_row_twoway(top_row, M, pad = 1L)))
+    top_row_captured <- utils::capture.output(writeLines(add_row_twoway(top_row, M, pad = 1L), useBytes = TRUE))
     table_captured <-
-      utils::capture.output(writeLines(add_row_twoway(colnames(df), M, pad = 1L)))
+      utils::capture.output(writeLines(add_row_twoway(colnames(df), M, pad = 1L), useBytes = TRUE))
     table_captured <-
-      as.matrix(rbind(top_row_captured, table_captured, utils::capture.output(writeLines(table_line))))
+      as.matrix(rbind(top_row_captured, table_captured, utils::capture.output(writeLines(table_line, useBytes = TRUE))))
     total_line <- nrow(df) - 1L
     for (i in seq_len(nrow(df))) {
       table_captured <-
-        as.matrix(rbind(table_captured, utils::capture.output(writeLines(add_row_twoway(df[i, ], M, pad = 1L)))))
+        as.matrix(rbind(table_captured, utils::capture.output(writeLines(add_row_twoway(df[i, ], M, pad = 1L), useBytes = TRUE))))
       if (i > 0L & i < nrow(df)) {
         if (separators) {
           df <- df %|% "NA"
           if (df[i, 1] != df[i + 1L, 1]) {
             table_captured <-
-              as.matrix(rbind(table_captured, utils::capture.output(writeLines(group_dashes))))
+              as.matrix(rbind(table_captured, utils::capture.output(writeLines(group_dashes, useBytes = TRUE))))
           }
         }
       }
       if (i == total_line) {
         table_captured <-
-          as.matrix(rbind(table_captured, utils::capture.output(writeLines(table_line))))
+          as.matrix(rbind(table_captured, utils::capture.output(writeLines(table_line, useBytes = TRUE))))
       }
     }
     wrap_tbl(table_captured, M = M, M1 = M1)
@@ -185,18 +185,18 @@ statascii <- function(df, ..., flavor = "oneway", padding = "stata", separators 
     table_line <- add_line(M1, pad = 1L)
     group_dashes <- add_dash(M1, pad = 1L)
     table_captured <-
-      utils::capture.output(writeLines(add_row_oneway(colnames(df), M, pad = 1L)))
+      utils::capture.output(writeLines(add_row_oneway(colnames(df), M, pad = 1L), useBytes = TRUE))
     table_captured <-
-      as.matrix(rbind(table_captured, utils::capture.output(writeLines(table_line))))
+      as.matrix(rbind(table_captured, utils::capture.output(writeLines(table_line, useBytes = TRUE))))
     for (i in seq_len(nrow(df))) {
       table_captured <-
-        as.matrix(rbind(table_captured, utils::capture.output(writeLines(add_row_oneway(df[i, ], M, pad = 1L)))))
+        as.matrix(rbind(table_captured, utils::capture.output(writeLines(add_row_oneway(df[i, ], M, pad = 1L), useBytes = TRUE))))
       if (i > 0L & i < nrow(df)) {
         if (separators) {
           df <- df %|% "NA"
           if (df[i, 1] != df[i + 1L, 1]) {
             table_captured <-
-              as.matrix(rbind(table_captured, utils::capture.output(writeLines(group_dashes))))
+              as.matrix(rbind(table_captured, utils::capture.output(writeLines(group_dashes, useBytes = TRUE))))
           }
         }
       }
