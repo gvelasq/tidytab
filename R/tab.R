@@ -35,9 +35,9 @@
 #' A tibble containing a table of frequencies for the variables listed in `...`
 #'
 #' @seealso
-#' `statar::tab()` by Matthieu Gomez is similar to `tabr::ftab()` yet is implemented differently and provides different arguments. Like `tabr`, `statar` uses a variant of [`statascii()`](https://github.com/gvelasq-r/statascii) to format tables for display in the `R` console.
+#' `statar::tab()` by Matthieu Gomez is similar to `tabr::ftab()` but is implemented differently. Differences between the two packages include that `tabr::ftab()` includes a total row with total frequencies for one-way tabulations, `tabr::tab()` produces a 2x2 contingency table for two-way tabulations (flat two-way tables are available with `tabr::ftab()`), the convenience functions `tab1()` and `tab2()`, automatic table wrapping for tables wider than the `R` console, and tabulation of named and unnamed vectors. Both packages use a variant of [`statascii()`](https://github.com/gvelasq-r/statascii) to format tables for display in the `R` console.
 #'
-#' `janitor::tabyl()` creates SPSS-like tabulations and adornments that are displayed using `tibble::tibble()` in the `R` console.
+#' `janitor::tabyl()` creates SPSS-like tabulations and adornments.
 #'
 #' `base::ftable()`, `stats::xtabs()` are base `R` solutions for creating tables of frequencies.
 #'
@@ -76,6 +76,9 @@
 #' @export
 tab <- function(x, ..., m = TRUE) {
   vars <- rlang::quos(...)
+  if (!exists("x_name", envir = x_env)) {
+    set_x_name(rlang::quo_name(rlang::enexpr(x)))
+  }
   if (length(vars) == 0L | length(vars) == 1L | length(vars) > 2L) {
     df_to_return <- ftab(x, ..., m = m)
   }
@@ -87,18 +90,23 @@ tab <- function(x, ..., m = TRUE) {
 
 #' @export
 ta <- function(x, ..., m = TRUE) {
+  set_x_name(rlang::quo_name(rlang::enexpr(x)))
   tab(x, ..., m = m)
 }
 
 #' @export
 ftab <- function(x, ..., m = TRUE) {
+  if (!exists("x_name", envir = x_env)) {
+    set_x_name(rlang::quo_name(rlang::enexpr(x)))
+  }
+  x_name <- get_x_name()
+  reset_x_name()
   if (m == FALSE) {
     x <- na.omit(x)
   }
   vars <- rlang::quos(...)
   if (length(vars) == 0L) {
     if (rlang::is_atomic(x) == TRUE) {
-      x_name <- rlang::quo_name("vector")
       x <- dplyr::as_tibble(x)
       x <- dplyr::count(x, value)
       x <- dplyr::rename(x, !! x_name := value, Freq. = n)
@@ -130,6 +138,9 @@ ftab <- function(x, ..., m = TRUE) {
 #' @export
 tab1 <- function(x, ..., m = TRUE) {
   vars <- rlang::quos(...)
+  if (!exists("x_name", envir = x_env)) {
+    set_x_name(rlang::quo_name(rlang::enexpr(x)))
+  }
   if (length(vars) == 0L) {
     ftab(x, ..., m = m)
   } else {

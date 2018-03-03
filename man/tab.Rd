@@ -71,9 +71,9 @@ mtcars \%>\% ta(gear)
 
 }
 \seealso{
-\code{statar::tab()} by Matthieu Gomez is similar to \code{tabr::ftab()} yet is implemented differently and provides different arguments. Like \code{tabr}, \code{statar} uses a variant of \href{https://github.com/gvelasq-r/statascii}{statascii()} to format tables for display in the \code{R} console.
+\code{statar::tab()} by Matthieu Gomez is similar to \code{tabr::ftab()} but is implemented differently. Differences between the two packages include that \code{tabr::ftab()} includes a total row with total frequencies for one-way tabulations, \code{tabr::tab()} produces a 2x2 contingency table for two-way tabulations (flat two-way tables are available with \code{tabr::ftab()}), the convenience functions \code{tab1()} and \code{tab2()}, automatic table wrapping for tables wider than the \code{R} console, and tabulation of named and unnamed vectors. Both packages use a variant of \href{https://github.com/gvelasq-r/statascii}{statascii()} to format tables for display in the \code{R} console.
 
-\code{janitor::tabyl()} creates SPSS-like tabulations and adornments that are displayed using \code{tibble::tibble()} in the \code{R} console.
+\code{janitor::tabyl()} creates SPSS-like tabulations and adornments.
 
 \code{base::ftable()}, \code{stats::xtabs()} are base \code{R} solutions for creating tables of frequencies.
 }

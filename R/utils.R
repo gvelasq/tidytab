@@ -1,6 +1,20 @@
 #' Internal functions
 #' @keywords internal
 #' @noRd
+x_env <- new.env(parent = emptyenv())
+
+get_x_name <- function() {
+  get0("x_name", envir = x_env)
+}
+
+set_x_name <- function(value) {
+  x_env$x_name <- value
+}
+
+reset_x_name <- function() {
+  suppressWarnings(rm(x_name, envir = x_env))
+}
+
 ctab <- function(x, ..., m = TRUE) {
   vars <- rlang::quos(...)
   if (length(vars) == 2L) {
