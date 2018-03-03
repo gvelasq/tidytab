@@ -1,8 +1,6 @@
 #' Internal functions
-#'
 #' @keywords internal
-#'
-#' @export ctab
+#' @noRd
 ctab <- function(x, ..., m = TRUE) {
   vars <- rlang::quos(...)
   if (length(vars) == 2L) {
