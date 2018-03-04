@@ -7,11 +7,9 @@ library(utils)
 context("test-statascii.R")
 
 tables <- read_rds("sample-tables.rds")
-for(i in 1:length(tables)) {
-  tables[[i]] <- iconv(tables[[i]], "UTF-8", "", sub = "byte")
-}
 
 test_that("oneway flavor works", {
+  skip_on_appveyor()
   # a. demonstrate 'oneway' flavor for one-way tables of frequencies
   a <- mtcars %>% count(gear) %>% rename(Freq. = n)
   a <- a %>% add_row(gear = "Total", Freq. = sum(a[, 2]))
@@ -19,6 +17,7 @@ test_that("oneway flavor works", {
 })
 
 test_that("oneway flavor with no padding works", {
+  skip_on_appveyor()
   # b. demonstrate 'oneway' flavor with no padding
   b <- mtcars %>% count(gear) %>% rename(Freq. = n)
   b <- b %>% add_row(gear = "Total", Freq. = sum(b[, 2]))
@@ -26,6 +25,7 @@ test_that("oneway flavor with no padding works", {
 })
 
 test_that("twowway flavor works for 3-way table", {
+  skip_on_appveyor()
   # c. demonstrate 'twoway' flavor for n-way tables of frequencies
   c <- mtcars %>% count(gear, carb, am) %>% rename(Freq. = n)
   c <- c %>% ungroup() %>% add_row(gear = "Total", carb = "", am = "", Freq. = sum(c[, 4]))
@@ -33,6 +33,7 @@ test_that("twowway flavor works for 3-way table", {
 })
 
 test_that("twoway flavor works with dashed group separator", {
+  skip_on_appveyor()
   # d. demonstrate 'twoway' flavor with dashed group separator
   d <- mtcars %>% count(gear, carb, am) %>% rename(Freq. = n)
   d <- d %>% ungroup() %>% add_row(gear = "Total", carb = "", am = "", Freq. = sum(d[, 4]))
@@ -40,6 +41,7 @@ test_that("twoway flavor works with dashed group separator", {
 })
 
 test_that("summary flavor works", {
+  skip_on_appveyor()
   # e. demonstrate 'summary' flavor for summary statistics
   e <- mtcars %>% group_by(gear) %>% summarize(
     Obs = n(),
@@ -52,6 +54,7 @@ test_that("summary flavor works", {
 })
 
 test_that("wrap_tbl() works", {
+  skip_on_appveyor()
   # f. demonstrate wrapping feature for wide tables
   f <- mtcars %>%
     mutate(cyl2 = cyl, vs2 = vs, am2 = am, carb2 = carb) %>%
