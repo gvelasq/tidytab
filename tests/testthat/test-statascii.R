@@ -8,7 +8,7 @@ context("test-statascii.R")
 
 tables <- read_rds("sample-tables.rds")
 for(i in 1:length(tables)) {
-  tables[[i]] <- enc2native(tables[[i]])
+  tables[[i]] <- iconv(tables[[i]], "UTF-8", "")
 }
 
 test_that("oneway flavor works", {
