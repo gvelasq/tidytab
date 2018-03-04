@@ -7,6 +7,9 @@ library(utils)
 context("test-statascii.R")
 
 tables <- read_rds("sample-tables.rds")
+for(i in 1:length(tables)) {
+  tables[[i]] <- enc2native(tables[[i]])
+}
 
 test_that("oneway flavor works", {
   # a. demonstrate 'oneway' flavor for one-way tables of frequencies
