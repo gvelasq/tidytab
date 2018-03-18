@@ -1,5 +1,5 @@
 # this R script creates sample tables for unit testing
-# tables last created on: 02Feb18 (tabr version 0.0.0.9000)
+# tables last created on: 18Mar18 (tabr version 0.0.0.9000)
 
 # setup
 library(dplyr)
