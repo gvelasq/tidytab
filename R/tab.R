@@ -107,7 +107,7 @@ ftab <- function(x, ..., m = TRUE) {
   vars <- rlang::quos(...)
   if (length(vars) == 0L) {
     if (rlang::is_atomic(x) == TRUE) {
-      x <- dplyr::as_tibble(x)
+      x <- tibble::as_tibble(x)
       x <- dplyr::count(x, value)
       x <- dplyr::rename(x, !! x_name := value, Freq. = n)
     }
@@ -125,11 +125,11 @@ ftab <- function(x, ..., m = TRUE) {
     x <- sapply(x, as.character)
     x <- rbind(x, c("Total", total_freq, "100.0", "\u00a0"))
     x[nrow(x) - 1L, ncol(x)] <- "100.0"
-    x <- dplyr::as_tibble(x)
+    x <- tibble::as_tibble(x)
     statascii(x, flavor = "oneway")
   }
   else if (ncol(x) > 4) {
-    x <- dplyr::as_tibble(x)
+    x <- tibble::as_tibble(x)
     statascii(x, flavor = "summary", separators = TRUE)
   }
   invisible(df_to_return)
