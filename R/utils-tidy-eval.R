@@ -11,11 +11,5 @@
 #' @aliases          quo quos enquo sym syms ensym expr exprs enexpr quo_name
 #' @importFrom rlang quo quos enquo sym syms ensym expr exprs enexpr quo_name
 #' @export           quo quos enquo sym syms ensym expr exprs enexpr quo_name
-#' @importFrom rlang UQ UQS .data := %|%
-#'
-#' @importFrom stats na.omit
-#' @importFrom stringr str_pad str_sub
-#' @importFrom tibble as_tibble
-#' @importFrom tidyr spread
-#' @importFrom utils capture.output View
+#' @importFrom rlang UQ UQS .data :=
 NULL

@@ -17,7 +17,9 @@ Imports:
     rlang (>= 0.2.0),
     stringr,
     tibble,
-    tidyr
+    tidyr,
+    crayon,
+    grDevices
 Suggests: 
     covr,
     testthat
