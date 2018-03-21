@@ -8,9 +8,16 @@ context("test-statascii.R")
 
 tables <- read_rds("sample-tables.rds")
 
+test_that("data frame must have at least two columns",
+  expect_error(statascii(as.data.frame(letters[1:3])))
+)
+
+test_that("data frame must have at least three columns for 'twoway' flavor",
+  expect_error(statascii(as.data.frame(letters[1:3]), flavor = "twoway"))
+)
+
 test_that("oneway flavor works", {
   skip_on_appveyor()
-  # a. demonstrate 'oneway' flavor for one-way tables of frequencies
   a <- mtcars %>% count(gear) %>% rename(Freq. = n)
   a <- a %>% add_row(gear = "Total", Freq. = sum(a[, 2]))
   expect_equal(tables[[1]], utils::capture.output(statascii(a, flavor = "oneway")))
@@ -18,7 +25,6 @@ test_that("oneway flavor works", {
 
 test_that("oneway flavor with no padding works", {
   skip_on_appveyor()
-  # b. demonstrate 'oneway' flavor with no padding
   b <- mtcars %>% count(gear) %>% rename(Freq. = n)
   b <- b %>% add_row(gear = "Total", Freq. = sum(b[, 2]))
   expect_equal(tables[[2]], utils::capture.output(statascii(b, flavor = "oneway", padding = "none")))
@@ -26,23 +32,20 @@ test_that("oneway flavor with no padding works", {
 
 test_that("twowway flavor works for 3-way table", {
   skip_on_appveyor()
-  # c. demonstrate 'twoway' flavor for n-way tables of frequencies
   c <- mtcars %>% count(gear, carb, am) %>% rename(Freq. = n)
   c <- c %>% ungroup() %>% add_row(gear = "Total", carb = "", am = "", Freq. = sum(c[, 4]))
   expect_equal(tables[[3]], utils::capture.output(statascii(c, flavor = "twoway")))
 })
 
-test_that("twoway flavor works with dashed group separator", {
+test_that("twoway flavor works with dashed group separators", {
   skip_on_appveyor()
-  # d. demonstrate 'twoway' flavor with dashed group separator
   d <- mtcars %>% count(gear, carb, am) %>% rename(Freq. = n)
   d <- d %>% ungroup() %>% add_row(gear = "Total", carb = "", am = "", Freq. = sum(d[, 4]))
   expect_equal(tables[[4]], utils::capture.output(statascii(d, flavor = "twoway", separators = TRUE)))
 })
 
-test_that("summary flavor works", {
+test_that("summary flavor with summary padding works", {
   skip_on_appveyor()
-  # e. demonstrate 'summary' flavor for summary statistics
   e <- mtcars %>% group_by(gear) %>% summarize(
     Obs = n(),
     Mean = mean(gear),
@@ -50,7 +53,7 @@ test_that("summary flavor works", {
     Min = min(gear),
     Max = max(gear)
   )
-  expect_equal(tables[[5]], utils::capture.output(statascii(e, flavor = "summary")))
+  expect_equal(tables[[5]], utils::capture.output(statascii(e, flavor = "summary", padding = "summary")))
 })
 
 test_that("wrap_tbl() works", {

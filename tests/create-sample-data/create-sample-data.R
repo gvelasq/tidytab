@@ -1,5 +1,5 @@
 # this R script creates sample tables for unit testing
-# tables last created on: 18Mar18 (tabr version 0.0.0.9000)
+# tables last created on: 20Mar18 (tabr version 0.0.0.9000)
 
 # setup
 library(dplyr)
@@ -37,7 +37,7 @@ e <- mtcars %>% group_by(gear) %>% summarize(
   Min = min(gear),
   Max = max(gear)
 )
-table_e <- capture.output(statascii(e, flavor = "summary"))
+table_e <- capture.output(statascii(e, flavor = "summary", padding = "summary"))
 
 # f. demonstrate wrapping feature for wide tables
 f <- mtcars %>%

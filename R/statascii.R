@@ -9,9 +9,6 @@ statascii <- function(df, ..., flavor = "oneway", padding = "stata", separators 
     rlang::abort("data frame must have at least two columns")
   }
   df <- as.matrix(purrr::modify(df, as.character))
-  if (ncol(df) == 1L) {
-    df <- t(df)
-  }
   if (padding == "stata") {
     colnames(df) <- stringr::str_pad(colnames(df), 9L, pad = " ")
   }
@@ -19,11 +16,7 @@ statascii <- function(df, ..., flavor = "oneway", padding = "stata", separators 
     colnames(df) <- stringr::str_pad(colnames(df), 5L, pad = " ")
   }
   nchar_content <- apply(df, 2, function(x) {
-    if (getRversion() <= "3.2.0") {
-      max(crayon::col_nchar(x, type = "width"))
-    } else {
-      max(crayon::col_nchar(x, keepNA = FALSE))
-    }
+    max(crayon::col_nchar(x, type = "width"))
   })
   if (getRversion() <= "3.2.0") {
     nchar_names <- crayon::col_nchar(colnames(df), type = "width")
@@ -107,13 +100,6 @@ statascii <- function(df, ..., flavor = "oneway", padding = "stata", separators 
     writeLines(table_line, con)
     for (i in seq_len(nrow(df))) {
       writeLines(add_row_twoway(df[i, ], M), con)
-      if (i > 0L & i < nrow(df)) {
-        if (separators) {
-          if (df[i, 1] != df[i + 1L, 1]) {
-            writeLines(group_dashes, con)
-          }
-        }
-      }
       if (i == total_line) {
         writeLines(table_line, con)
       }
