@@ -157,11 +157,11 @@ tab1 <- function(x, ..., m = TRUE) {
 tab2 <- function(x, ..., m = TRUE) {
   vars <- rlang::quos(...)
   filter <- function(x, y) {
-    x >= y
+    x <= y
   }
   tab_sequence <- purrr::cross2(1L:length(vars), 1L:length(vars), .filter = filter)
   for (i in 1L:length(tab_sequence)) {
-    tab(x = x, UQ(vars[[purrr::as_vector(tab_sequence[[i]])[1]]]), UQ(vars[[purrr::as_vector(tab_sequence[[i]])[2]]]), m = m)
+    tab(x = x, UQ(vars[[purrr::as_vector(tab_sequence[[i]])[2]]]), UQ(vars[[purrr::as_vector(tab_sequence[[i]])[1]]]), m = m)
     cat("\n")
   }
 }
