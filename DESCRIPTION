@@ -9,7 +9,9 @@ License: MIT + file LICENSE
 Depends: 
     R (>= 3.2)
 Imports: 
+    crayon,
     dplyr,
+    grDevices,
     here,
     magrittr,
     purrr,
@@ -17,9 +19,7 @@ Imports:
     rlang (>= 0.2.0),
     stringr,
     tibble,
-    tidyr,
-    crayon,
-    grDevices
+    tidyr
 Suggests: 
     covr,
     testthat
