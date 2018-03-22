@@ -18,11 +18,7 @@ statascii <- function(df, ..., flavor = "oneway", padding = "stata", separators 
   nchar_content <- apply(df, 2, function(x) {
     max(crayon::col_nchar(x, type = "width"))
   })
-  if (getRversion() <= "3.2.0") {
-    nchar_names <- crayon::col_nchar(colnames(df), type = "width")
-  } else {
-    nchar_names <- crayon::col_nchar(colnames(df), keepNA = FALSE)
-  }
+  nchar_names <- crayon::col_nchar(colnames(df), type = "width")
   M <- pmax(nchar_content, nchar_names)
   M1 <- as.integer(c(
     M[1],
