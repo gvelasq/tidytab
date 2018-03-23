@@ -61,6 +61,9 @@
 #' # tables wider than the R console are automatically wrapped
 #' mtcars %>% tab(cyl, gear, am, vs)
 #'
+#' # missing values are displayed in tidyverse red
+#' tab(letters[24:27])
+#'
 #' # ftab() displays only flat contingency tables (here, with two variables)
 #' mtcars %>% ftab(cyl, gear)
 #'
