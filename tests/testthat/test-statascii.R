@@ -8,13 +8,13 @@ context("test-statascii.R")
 
 tables <- read_rds("sample-tables.rds")
 
-test_that("data frame must have at least two columns",
+test_that("data frame must have at least two columns", {
   expect_error(statascii(as.data.frame(letters[1:3])))
-)
+})
 
-test_that("data frame must have at least three columns for 'twoway' flavor",
+test_that("data frame must have at least three columns for 'twoway' flavor", {
   expect_error(statascii(as.data.frame(letters[1:3]), flavor = "twoway"))
-)
+})
 
 test_that("oneway flavor works", {
   skip_on_appveyor()

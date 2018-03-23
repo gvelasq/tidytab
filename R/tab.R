@@ -109,14 +109,14 @@ ftab <- function(x, ..., m = TRUE) {
     if (rlang::is_atomic(x) == TRUE) {
       x <- tibble::as_tibble(x)
       x <- dplyr::count(x, value)
-      x <- dplyr::rename(x, !! x_name := value, Freq. = n)
+      x <- dplyr::rename(x, !!x_name := value, Freq. = n)
     }
   }
   else {
     groups <- dplyr::group_vars(x)
     x <- dplyr::group_by(x, ...)
     x <- dplyr::summarize(x, Freq. = n())
-    x <- dplyr::group_by(x, !!! rlang::syms(groups))
+    x <- dplyr::group_by(x, !!!rlang::syms(groups))
   }
   x <- dplyr::mutate(x, Percent = formatC(Freq. / sum(Freq.) * 100, digits = 1L, format = "f"), Cum. = formatC(cumsum(Percent), digits = 1L, format = "f"))
   df_to_return <- x

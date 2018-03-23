@@ -33,7 +33,7 @@ statascii <- function(df, ..., flavor = "oneway", padding = "stata", separators 
     M[length(M)] - 1L
   ))
   for (i in seq_along(M)) {
-    df[ , i] <- df[ , i] %|% crayon::col_align(color_red("NA"), width = M[i], align = "right")
+    df[, i] <- df[, i] %|% crayon::col_align(color_red("NA"), width = M[i], align = "right")
   }
   if (flavor == "oneway") {
     table_line <- add_line(M1)
