@@ -34,13 +34,13 @@ devtools::install_github("gvelasq-r/tabr")
 ## Usage
 
 ```{r example, message = FALSE}
-# setup (note that tabr automatically imports the magrittr pipe)
+# setup (tabr automatically imports the magrittr pipe)
 library(tabr)
 
 # one-way table of frequencies
 mtcars %>% tab(cyl)
 
-# two-way table of frequencies (a 2x2 contingency table)
+# two-way table of frequencies (a special 2x2 contingency table)
 mtcars %>% tab(cyl, gear)
 
 # flat contingency tables of three (or more) variables
@@ -48,6 +48,9 @@ mtcars %>% tab(cyl, gear, am)
 
 # tables wider than the R console are automatically wrapped
 mtcars %>% tab(cyl, gear, am, vs)
+
+# missing values are displayed in tidyverse red
+tab(letters[24:27])
 
 # ftab() displays only flat contingency tables (here, with two variables)
 mtcars %>% ftab(cyl, gear)
