@@ -9,10 +9,10 @@
 #' @param title Optional title for viewer window.
 #'
 #' @export
-br <- function(x, title = NULL) {
-  title_expr <- rlang::quo_name(rlang::enexpr(x))
-  if (!is.null(title)) {
-    title_expr <- rlang::quo_name(rlang::enexpr(title))
+br <- function(x, title) {
+  title_expr <- rlang::quo_name(rlang::enexpr(title))
+  if (title_expr == "") {
+    title_expr <- rlang::quo_name(rlang::enexpr(x))
   }
   get("View", envir = as.environment("package:utils"))(x, title = title_expr)
 }
