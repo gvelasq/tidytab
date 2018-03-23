@@ -23,7 +23,7 @@ tab2(x, ..., m = TRUE)
 
 \item{...}{A comma separated list of unquoted variable names.}
 
-\item{m}{If \code{TRUE} (the default), the tables will report missing values.}
+\item{m}{If \code{TRUE} (the default), missing values are reported.}
 }
 \value{
 A tibble containing a table of frequencies for the variables listed in \code{...}
@@ -42,7 +42,7 @@ If two variables are passed to \code{tab()}, a special 2x2 contingency table is 
 
 If three or more variables are passed to \code{tab()}, a flat contingency table is printed (with columns 'Freq.', 'Percent', and 'Cum.').
 
-Invisibly returned tibbles exclude total rows and columns to avoid collision of variable classes.
+The invisibly returned tibble excludes total rows and columns to avoid collision of variable classes.
 }
 \examples{
 # one-way table of frequencies

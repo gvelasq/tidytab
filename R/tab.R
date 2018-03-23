@@ -20,7 +20,7 @@
 #'
 #' @param x A vector, data.frame, or tibble.
 #' @param ... A comma separated list of unquoted variable names.
-#' @param m If `TRUE` (the default), the tables will report missing values.
+#' @param m If `TRUE` (the default), missing values are reported.
 #'
 #' @details
 #' If a single variable is passed to `tab()`, a table of frequencies is printed (with a total row and columns 'Freq.', 'Percent', and 'Cum.').
@@ -29,7 +29,7 @@
 #'
 #' If three or more variables are passed to `tab()`, a flat contingency table is printed (with columns 'Freq.', 'Percent', and 'Cum.').
 #'
-#' Invisibly returned tibbles exclude total rows and columns to avoid collision of variable classes.
+#' The invisibly returned tibble excludes total rows and columns to avoid collision of variable classes.
 #'
 #' @return
 #' A tibble containing a table of frequencies for the variables listed in `...`
