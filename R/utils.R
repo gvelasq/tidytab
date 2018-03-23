@@ -22,7 +22,7 @@ set_x_name <- function(value) {
 }
 
 reset_x_name <- function() {
-  suppressWarnings(rm(x_name, envir = x_env))
+  suppressWarnings(rm("x_name", envir = x_env))
 }
 
 ctab <- function(x, ..., m = TRUE) {
