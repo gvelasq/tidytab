@@ -108,8 +108,8 @@ ftab <- function(x, ..., m = TRUE) {
   if (length(vars) == 0L) {
     if (rlang::is_atomic(x) == TRUE) {
       x <- tibble::as_tibble(x)
-      x <- dplyr::count(x, value)
-      x <- dplyr::rename(x, !!x_name := value, Freq. = n)
+      x <- dplyr::count(x, .data$value)
+      x <- dplyr::rename(x, !!x_name := .data$value, Freq. = .data$n)
     }
   }
   else {
@@ -118,7 +118,7 @@ ftab <- function(x, ..., m = TRUE) {
     x <- dplyr::summarize(x, Freq. = n())
     x <- dplyr::group_by(x, !!!rlang::syms(groups))
   }
-  x <- dplyr::mutate(x, Percent = formatC(Freq. / sum(Freq.) * 100, digits = 1L, format = "f"), Cum. = formatC(cumsum(Percent), digits = 1L, format = "f"))
+  x <- dplyr::mutate(x, Percent = formatC(.data$Freq. / sum(.data$Freq.) * 100, digits = 1L, format = "f"), Cum. = formatC(cumsum(.data$Percent), digits = 1L, format = "f"))
   df_to_return <- x
   if (ncol(x) == 4 & colnames(x)[2] == "Freq.") {
     total_freq <- formatC(sum(x[, 2]), digits = 0L, format = "f")
