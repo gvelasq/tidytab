@@ -1,11 +1,11 @@
 #' Create tables of frequencies
 #'
 #' @description
-#' `tab()` and `ta()` are synonyms and create one-way and two-way tables of frequencies in the `R` console, similar to those created by Stata's `tabulate` function. When three or more variables are provided, these functions print flat tables of frequencies.
+#' `tab()` creates n-way tables of frequencies in the `R` console, similar to those created by Stata's `tabulate` function. When three or more variables are passed to `tab()`, only flat tables are displayed. `ta()` is a shortened alias for `tab()`.
 #'
 #' `ftab()` creates only flat tables of frequencies.
 #'
-#' The convenience functions `tab1()` and `tab2()` are inspired by functions of the same name in Stata. They allow rapid tabulation of a set of variables during interactive data analysis. `tab1()` creates one-way tables of frequencies for each listed variable. `tab2()` creates two-way tables of frequencies for all listed variable combinations.
+#' The convenience functions `tab1()` and `tab2()` are inspired by functions of the same name in Stata. They allow rapid tabulation of a set of variables. `tab1()` creates one-way tables of frequencies for each listed variable. `tab2()` creates two-way tables of frequencies for all listed variable combinations.
 #'
 #' @usage
 #' tab(x, ..., m = TRUE)
@@ -19,13 +19,13 @@
 #' tab2(x, ..., m = TRUE)
 #'
 #' @param x A vector, data.frame, or tibble.
-#' @param ... Comma separated list of unquoted variable names.
-#' @param m If `TRUE` the tables will report missing values.
+#' @param ... A comma separated list of unquoted variable names.
+#' @param m If `TRUE` (the default), the tables will report missing values.
 #'
 #' @details
 #' If a single variable is passed to `tab()`, a table of frequencies is printed (with a total row and columns 'Freq.', 'Percent', and 'Cum.').
 #'
-#' If two variables are passed to `tab()`, a 2x2 contingency table is printed (with a total row and a total column).
+#' If two variables are passed to `tab()`, a special 2x2 contingency table is printed (with a total row and a total column).
 #'
 #' If three or more variables are passed to `tab()`, a flat contingency table is printed (with columns 'Freq.', 'Percent', and 'Cum.').
 #'
@@ -35,17 +35,24 @@
 #' A tibble containing a table of frequencies for the variables listed in `...`
 #'
 #' @seealso
-#' `statar::tab()` by Matthieu Gomez is similar to `tabr::ftab()` but is implemented differently. Differences between the two packages include that `tabr::ftab()` includes a total row with total frequencies for one-way tabulations, `tabr::tab()` produces a 2x2 contingency table for two-way tabulations (flat two-way tables are available with `tabr::ftab()`), the convenience functions `tab1()` and `tab2()`, automatic table wrapping for tables wider than the `R` console, and tabulation of named and unnamed vectors. Both packages use a variant of [`statascii()`](https://github.com/gvelasq-r/statascii) to format tables for display in the `R` console.
+#' The statar package by Matthieu Gomez provides a `tab()` function with output similar to tabr's `ftab()`. Both packages use a variant of [`statascii()`](https://github.com/gvelasq-r/statascii) to format tables for display in the `R` console. Differences between the packages include:
 #'
-#' `janitor::tabyl()` creates SPSS-like tabulations and adornments.
+#' * tabr displays tables in tidyverse colors: grey for block drawing characters and red for `NA`s.
+#' * tabr allows for tabulation of named and unnamed vectors.
+#' * tabr implements automatic table wrapping for tables wider than the `R` console.
+#' * tabr's `tab()` and `ftab()` display a total row with total frequencies for one-way tabulations.
+#' * tabr's `tab()` displays a special 2x2 contingency table for two-way tabulations (flat two-way tables are available with `ftab()`).
+#' * tabr's convenience functions `tab1()` and `tab2()` allow for rapid tabulation of a set of variables into either one- or two-way tables.
 #'
-#' `base::ftable()`, `stats::xtabs()` are base `R` solutions for creating tables of frequencies.
+#' The janitor package by Sam Firke provides the `tabyl()` function for SPSS-like tables of frequencies and adornments.
+#'
+#' Base `R` provides the `base::ftable()` and `stats::xtabs()` functions for unadorned tables of frequencies.
 #'
 #' @examples
 #' # one-way table of frequencies
 #' mtcars %>% tab(cyl)
 #'
-#' # two-way table of frequencies (a 2x2 contingency table)
+#' # two-way table of frequencies (a special 2x2 contingency table)
 #' mtcars %>% tab(cyl, gear)
 #'
 #' # flat contingency tables of three (or more) variables
