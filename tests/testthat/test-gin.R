@@ -1,4 +1,4 @@
-library(tabr)
+library(tidytab)
 library(tibble)
 context("test-gin.R")
 

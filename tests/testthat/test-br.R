@@ -1,4 +1,4 @@
-library(tabr)
+library(tidytab)
 library(testthat)
 library(utils)
 context("test-br.R")

@@ -1,4 +1,4 @@
-# Contributing to tabr
+# Contributing to tidytab
 
 -   [Prerequisites](#prerequisites)
 -   [PR Process](#pr-process)

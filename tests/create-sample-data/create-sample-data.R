@@ -6,7 +6,7 @@ library(dplyr)
 library(here)
 library(readr)
 library(stringr)
-library(tabr)
+library(tidytab)
 library(utils)
 
 # a. demonstrate 'oneway' flavor for one-way tables of frequencies

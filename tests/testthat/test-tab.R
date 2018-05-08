@@ -1,4 +1,4 @@
-library(tabr)
+library(tidytab)
 library(tibble)
 library(rlang)
 context("test-tab.R")

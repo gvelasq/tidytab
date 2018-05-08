@@ -2,7 +2,7 @@ library(dplyr)
 library(here)
 library(readr)
 library(stringr)
-library(tabr)
+library(tidytab)
 library(utils)
 context("test-statascii.R")
 

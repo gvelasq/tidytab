@@ -1,4 +1,4 @@
 library(testthat)
-library(tabr)
+library(tidytab)
 
-test_check("tabr")
+test_check("tidytab")

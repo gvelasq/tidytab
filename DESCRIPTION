@@ -1,4 +1,4 @@
-Package: tabr
+Package: tidytab
 Title: Create Tables of Frequencies
 Version: 0.0.0.9000
 Authors@R: person("Gustavo","Velásquez", email = "gvelasq2github@gmail.com", role = c("aut", "cre"))
@@ -6,6 +6,7 @@ Author: Gustavo Velásquez <gvelasq2github@gmail.com>
 Maintainer: Gustavo Velásquez <gvelasq2github@gmail.com>
 Description: Functions to create tables of frequencies.
 License: MIT + file LICENSE
+URL: https://github.com/g-velasq/tidytab
 Depends: 
     R (>= 3.2)
 Imports: 

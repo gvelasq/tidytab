@@ -1,28 +1,28 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-tabr
-====
+tidytab
+=======
 
 Create tables of frequencies
 
-[![Travis build status](https://travis-ci.org/gvelasq-r/tabr.svg?branch=master)](https://travis-ci.org/gvelasq-r/tabr) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/gvelasq-r/tabr?branch=master&svg=true)](https://ci.appveyor.com/project/gvelasq-r/tabr) [![Coverage status](https://codecov.io/gh/gvelasq-r/tabr/branch/master/graph/badge.svg)](https://codecov.io/github/gvelasq-r/tabr?branch=master) [![CRAN status](https://www.r-pkg.org/badges/version/tabr)](https://cran.r-project.org/package=tabr) [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Travis build status](https://travis-ci.org/g-velasq/tidytab.svg?branch=master)](https://travis-ci.org/g-velasq/tidytab) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/g-velasq/tidytab?branch=master&svg=true)](https://ci.appveyor.com/project/g-velasq/tidytab) [![Coverage status](https://codecov.io/gh/g-velasq/tidytab/branch/master/graph/badge.svg)](https://codecov.io/github/g-velasq/tidytab?branch=master) [![CRAN status](https://www.r-pkg.org/badges/version/tidytab)](https://cran.r-project.org/package=tidytab) [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
 Installation
 ------------
 
-You can install tabr from GitHub with:
+You can install tidytab from GitHub with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("gvelasq-r/tabr")
+devtools::install_github("g-velasq/tidytab")
 ```
 
 Usage
 -----
 
 ``` r
-# setup (tabr automatically imports the magrittr pipe)
-library(tabr)
+# setup (tidytab automatically imports the magrittr pipe)
+library(tidytab)
 
 # one-way table of frequencies
 mtcars %>% tab(cyl)
