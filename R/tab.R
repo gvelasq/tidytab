@@ -35,14 +35,14 @@
 #' A tibble containing a table of frequencies for the variables listed in `...`
 #'
 #' @seealso
-#' The statar package by Matthieu Gomez provides a `tab()` function with output similar to tabr's `ftab()`. Both packages use a variant of [`statascii()`](https://github.com/gvelasq-r/statascii) to format tables for display in the `R` console. Differences between the packages include:
+#' The statar package by Matthieu Gomez provides a `tab()` function with output similar to tidytab's `ftab()`. Both packages use a variant of [`statascii()`](https://github.com/g-velasq/statascii) to format tables for display in the `R` console. Differences between the packages include:
 #'
-#' * tabr displays tables in tidyverse colors: grey for block drawing characters and red for `NA`s.
-#' * tabr allows for tabulation of named and unnamed vectors.
-#' * tabr implements automatic table wrapping for tables wider than the `R` console.
-#' * tabr's `tab()` and `ftab()` display a total row with total frequencies for one-way tabulations.
-#' * tabr's `tab()` displays a special 2x2 contingency table for two-way tabulations (flat two-way tables are available with `ftab()`).
-#' * tabr's convenience functions `tab1()` and `tab2()` allow for rapid tabulation of a set of variables into either one- or two-way tables.
+#' * tidytab displays tables in tidyverse colors: grey for block drawing characters and red for `NA`s.
+#' * tidytab allows for tabulation of named and unnamed vectors.
+#' * tidytab implements automatic table wrapping for tables wider than the `R` console.
+#' * tidytab's `tab()` and `ftab()` display a total row with total frequencies for one-way tabulations.
+#' * tidytab's `tab()` displays a special 2x2 contingency table for two-way tabulations (flat two-way tables are available with `ftab()`).
+#' * tidytab's convenience functions `tab1()` and `tab2()` allow for rapid tabulation of a set of variables into either one- or two-way tables.
 #'
 #' The janitor package by Sam Firke provides the `tabyl()` function for SPSS-like tables of frequencies and adornments.
 #'

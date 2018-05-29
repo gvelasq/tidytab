@@ -6,7 +6,7 @@
 \alias{tidytab-package}
 \title{tidytab: Create Tables of Frequencies}
 \description{
-Functions to create tables of frequencies and summary statistics.
+Functions to create tables of frequencies.
 }
 \seealso{
 Useful links:

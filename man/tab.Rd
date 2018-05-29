@@ -74,14 +74,14 @@ mtcars \%>\% ta(gear)
 
 }
 \seealso{
-The statar package by Matthieu Gomez provides a \code{tab()} function with output similar to tabr's \code{ftab()}. Both packages use a variant of \href{https://github.com/gvelasq-r/statascii}{statascii()} to format tables for display in the \code{R} console. Differences between the packages include:
+The statar package by Matthieu Gomez provides a \code{tab()} function with output similar to tidytab's \code{ftab()}. Both packages use a variant of \href{https://github.com/g-velasq/statascii}{statascii()} to format tables for display in the \code{R} console. Differences between the packages include:
 \itemize{
-\item tabr displays tables in tidyverse colors: grey for block drawing characters and red for \code{NA}s.
-\item tabr allows for tabulation of named and unnamed vectors.
-\item tabr implements automatic table wrapping for tables wider than the \code{R} console.
-\item tabr's \code{tab()} and \code{ftab()} display a total row with total frequencies for one-way tabulations.
-\item tabr's \code{tab()} displays a special 2x2 contingency table for two-way tabulations (flat two-way tables are available with \code{ftab()}).
-\item tabr's convenience functions \code{tab1()} and \code{tab2()} allow for rapid tabulation of a set of variables into either one- or two-way tables.
+\item tidytab displays tables in tidyverse colors: grey for block drawing characters and red for \code{NA}s.
+\item tidytab allows for tabulation of named and unnamed vectors.
+\item tidytab implements automatic table wrapping for tables wider than the \code{R} console.
+\item tidytab's \code{tab()} and \code{ftab()} display a total row with total frequencies for one-way tabulations.
+\item tidytab's \code{tab()} displays a special 2x2 contingency table for two-way tabulations (flat two-way tables are available with \code{ftab()}).
+\item tidytab's convenience functions \code{tab1()} and \code{tab2()} allow for rapid tabulation of a set of variables into either one- or two-way tables.
 }
 
 The janitor package by Sam Firke provides the \code{tabyl()} function for SPSS-like tables of frequencies and adornments.

@@ -21,7 +21,7 @@ Usage
 -----
 
 ``` r
-# setup (tidytab automatically imports the magrittr pipe)
+# setup (tidytab automatically exports the magrittr pipe)
 library(tidytab)
 
 # one-way table of frequencies
