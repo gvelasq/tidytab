@@ -11,7 +11,8 @@ Functions to create tables of frequencies.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/g-velasq/tidytab}
+  \item \url{https://github.com/gvelasq/tidytab}
+  \item Report bugs at \url{https://github.com/gvelasq/tidytab/issues}
 }
 
 }

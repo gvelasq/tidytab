@@ -1,24 +1,30 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-tidytab
-=======
+
+# tidytab
 
 Create tables of frequencies
 
-[![Travis build status](https://travis-ci.org/g-velasq/tidytab.svg?branch=master)](https://travis-ci.org/g-velasq/tidytab) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/g-velasq/tidytab?branch=master&svg=true)](https://ci.appveyor.com/project/g-velasq/tidytab) [![Coverage status](https://codecov.io/gh/g-velasq/tidytab/branch/master/graph/badge.svg)](https://codecov.io/github/g-velasq/tidytab?branch=master) [![CRAN status](https://www.r-pkg.org/badges/version/tidytab)](https://cran.r-project.org/package=tidytab) [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Travis build
+status](https://travis-ci.org/gvelasq/tidytab.svg?branch=master)](https://travis-ci.org/gvelasq/tidytab)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/gvelasq/tidytab?branch=master&svg=true)](https://ci.appveyor.com/project/gvelasq/tidytab)
+[![Coverage
+status](https://codecov.io/gh/gvelasq/tidytab/branch/master/graph/badge.svg)](https://codecov.io/github/gvelasq/tidytab?branch=master)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/tidytab)](https://cran.r-project.org/package=tidytab)
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 
-Installation
-------------
+## Installation
 
 You can install tidytab from GitHub with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("g-velasq/tidytab")
+devtools::install_github("gvelasq/tidytab")
 ```
 
-Usage
------
+## Usage
 
 ``` r
 # setup (tidytab automatically exports the magrittr pipe)
@@ -180,6 +186,8 @@ mtcars %>% ta(gear)
 #>       Total │         32       100.0           
 ```
 
-------------------------------------------------------------------------
+-----
 
-Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of
+Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree
+to abide by its terms.
