@@ -1,5 +1,6 @@
 #' @keywords internal
 #' @noRd
+#' @importFrom rlang .data := %|% !!
 
 x_env <- new.env(parent = emptyenv())
 
