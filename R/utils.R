@@ -1,15 +1,5 @@
 #' @keywords internal
 #' @noRd
-#' @importFrom crayon col_align col_nchar col_substr make_style red
-#' @importFrom dplyr count group_by group_vars mutate rename summarize
-#' @importFrom grDevices grey
-#' @importFrom purrr as_vector cross2 map_chr map_df map2_chr modify
-#' @importFrom rlang %|% abort as_character
-#' @importFrom stats na.omit
-#' @importFrom stringr str_c str_dup str_pad str_replace
-#' @importFrom tibble as_tibble
-#' @importFrom tidyr spread
-#' @importFrom utils capture.output View
 
 x_env <- new.env(parent = emptyenv())
 
