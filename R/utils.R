@@ -2,6 +2,8 @@
 #' @noRd
 #' @importFrom rlang .data := %|% !!
 
+helpers <- tidyselect::vars_select_helpers
+
 x_env <- new.env(parent = emptyenv())
 
 get_x_name <- function() {
