@@ -155,7 +155,7 @@ tab1 <- function(x, ..., m = TRUE) {
     ftab(x, ..., m = m)
   } else {
     for (i in 1L:length(vars)) {
-      tab(x = x, UQ(vars[[i]]), m = m)
+      tab(x = x, `!!`(vars[[i]]), m = m)
       if (i < length(vars)) {
         cat("\n")
       }
@@ -171,7 +171,7 @@ tab2 <- function(x, ..., m = TRUE) {
   }
   tab_sequence <- purrr::cross2(1L:length(vars), 1L:length(vars), .filter = filter)
   for (i in 1L:length(tab_sequence)) {
-    tab(x = x, UQ(vars[[purrr::as_vector(tab_sequence[[i]])[2]]]), UQ(vars[[purrr::as_vector(tab_sequence[[i]])[1]]]), m = m)
+    tab(x = x, `!!`(vars[[purrr::as_vector(tab_sequence[[i]])[2]]]), `!!`(vars[[purrr::as_vector(tab_sequence[[i]])[1]]]), m = m)
     cat("\n")
   }
 }
