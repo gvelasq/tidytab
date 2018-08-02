@@ -112,7 +112,7 @@ ftab <- function(x, ..., m = TRUE) {
   x_name <- get_x_name()
   reset_x_name()
   if (m == FALSE) {
-    x <- na.omit(x)
+    x <- stats::na.omit(x)
   }
   vars <- rlang::quos(...)
   if (length(vars) == 0L) {
