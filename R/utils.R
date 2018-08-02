@@ -20,7 +20,7 @@ ctab <- function(x, ..., m = TRUE) {
   if (length(vars) == 2L) {
     x <- dplyr::count(x, ...)
     if (m == FALSE) {
-      x <- na.omit(x)
+      x <- stats::na.omit(x)
     }
     topvar <- rlang::quo_name(colnames(x[2]))
     x <- tidyr::spread(x, 2, 3, fill = 0L)
