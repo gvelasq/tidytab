@@ -200,17 +200,17 @@ wrap_tbl <- function(tbl, M = M, M1 = M1, width = getOption("width")) {
 }
 
 add_line <- function(n) {
-  tmp <- purrr::map_chr(n, ~ paste0(rep(color_grey("\u2500"), . + 2L), collapse = ""))
+  tmp <- purrr::map_chr(n, ~paste0(rep(color_grey("\u2500"), . + 2L), collapse = ""))
   paste0(color_grey("\u2500"), paste0(tmp, collapse = color_grey("\u253c")))
 }
 
 add_dash <- function(n) {
-  tmp <- purrr::map_chr(n, ~ paste0(rep(color_grey("-"), . + 2L), collapse = ""))
+  tmp <- purrr::map_chr(n, ~paste0(rep(color_grey("-"), . + 2L), collapse = ""))
   paste0(color_grey("-"), paste0(tmp, collapse = color_grey("\u253c")))
 }
 
 add_row_oneway <- function(x, n) {
-  row_content <- purrr::map2_chr(x, seq_along(x), ~ sprintf(paste0("%", n[.y], "s"), .x))
+  row_content <- purrr::map2_chr(x, seq_along(x), ~sprintf(paste0("%", n[.y], "s"), .x))
   paste0(
     paste0(paste0("  ", row_content[1], " "), collapse = ""),
     color_grey("\u2502"),
@@ -220,7 +220,7 @@ add_row_oneway <- function(x, n) {
 }
 
 add_row_twoway <- function(x, n) {
-  row_content <- purrr::map2_chr(x, seq_along(x), ~ sprintf(paste0("%", n[.y], "s"), .x))
+  row_content <- purrr::map2_chr(x, seq_along(x), ~sprintf(paste0("%", n[.y], "s"), .x))
   paste0(
     paste0(paste0(" ", row_content[1], " "), collapse = ""),
     color_grey("\u2502"),
