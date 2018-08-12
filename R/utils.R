@@ -50,7 +50,7 @@ ctab <- function(x, ..., m = TRUE) {
 }
 
 color_grey <- function(x) {
-  crayon::make_style(grDevices::grey(0.6), grey = TRUE)(x)
+  crayon::make_style("darkgrey")(x)
 }
 
 color_red <- function(x) {
