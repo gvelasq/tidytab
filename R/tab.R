@@ -19,7 +19,7 @@
 #' tab2(x, ..., m = TRUE)
 #'
 #' @param x A vector, data.frame, or tibble.
-#' @param ... A comma separated list of unquoted variable names.
+#' @param ... A comma separated list of unquoted variable names or positions. Select helpers from [dplyr](https://dplyr.tidyverse.org/reference/select_helpers.html) and [tidyselect](https://www.rdocumentation.org/packages/tidyselect/versions/0.2.4/topics/select_helpers) are supported.
 #' @param m If `TRUE` (the default), missing values are reported.
 #'
 #' @details
@@ -35,9 +35,10 @@
 #' A tibble containing a table of frequencies for the variables listed in `...`
 #'
 #' @seealso
-#' The statar package by Matthieu Gomez provides a `tab()` function with output similar to tidytab's `ftab()`. Both packages use a variant of [`statascii()`](https://github.com/g-velasq/statascii) to format tables for display in the `R` console. Differences between the packages include:
+#' The statar package by Matthieu Gomez provides a `tab()` function with output similar to tidytab's `ftab()`. Both packages use a variant of [`statascii()`](https://github.com/gvelasq/statascii) to format tables for display in the `R` console. Differences between the packages include:
 #'
-#' * tidytab displays tables in tidyverse colors: grey for block drawing characters and red for `NA`s.
+#' * tidytab supports select helpers from [dplyr](https://dplyr.tidyverse.org/reference/select_helpers.html) and [tidyselect](https://www.rdocumentation.org/packages/tidyselect/versions/0.2.4/topics/select_helpers).
+#' * tidytab displays tables in colors: dark grey for block drawing characters and red for `NA`s.
 #' * tidytab allows for tabulation of named and unnamed vectors.
 #' * tidytab implements automatic table wrapping for tables wider than the `R` console.
 #' * tidytab's `tab()` and `ftab()` display a total row with total frequencies for one-way tabulations.
@@ -46,7 +47,7 @@
 #'
 #' The janitor package by Sam Firke provides the `tabyl()` function for SPSS-like tables of frequencies and adornments.
 #'
-#' Base `R` provides the `base::ftable()` and `stats::xtabs()` functions for unadorned tables of frequencies.
+#' Base `R` provides the `ftable()` and `xtabs()` functions for unadorned tables of frequencies.
 #'
 #' @examples
 #' # one-way table of frequencies
@@ -61,7 +62,7 @@
 #' # tables wider than the R console are automatically wrapped
 #' mtcars %>% tab(cyl, gear, am, vs)
 #'
-#' # missing values are displayed in tidyverse red
+#' # missing values are displayed in red
 #' tab(letters[24:27])
 #'
 #' # ftab() displays only flat contingency tables (here, with two variables)
@@ -89,11 +90,18 @@ tab <- function(x, ..., m = TRUE) {
   if (!exists("x_name", envir = x_env)) {
     set_x_name(rlang::quo_name(rlang::enexpr(x)))
   }
-  if (length(vars) == 0L | length(vars) == 1L | length(vars) > 2L) {
+  if (length(vars) == 0L) {
     df_to_return <- ftab(x, ..., m = m)
   }
-  if (length(vars) == 2L) {
-    df_to_return <- ctab(x, ..., m = m)
+  else {
+    vars <- lapply(vars, rlang::env_bury, !!!helpers)
+    varnames <- tidyselect::vars_select(names(x), !!!vars)
+    if (length(varnames) == 1L | length(varnames) > 2L) {
+      df_to_return <- ftab(x, !!!vars, m = m)
+    }
+    if (length(varnames) == 2L) {
+      df_to_return <- ctab(x, !!!vars, m = m)
+    }
   }
   invisible(df_to_return)
 }
@@ -123,10 +131,11 @@ ftab <- function(x, ..., m = TRUE) {
     }
   }
   else {
-    groups <- dplyr::group_vars(x)
-    x <- dplyr::group_by(x, ...)
+    vars <- lapply(vars, rlang::env_bury, !!!helpers)
+    varnames <- tidyselect::vars_select(names(x), !!!vars)
+    x <- dplyr::select(x, !!!varnames)
+    x <- dplyr::group_by_at(x, names(varnames))
     x <- dplyr::summarize(x, Freq. = n())
-    x <- dplyr::group_by(x, !!!rlang::syms(groups))
   }
   x <- dplyr::mutate(x, Percent = formatC(.data$Freq. / sum(.data$Freq.) * 100, digits = 1L, format = "f"), Cum. = formatC(cumsum(.data$Percent), digits = 1L, format = "f"))
   df_to_return <- x
@@ -154,9 +163,12 @@ tab1 <- function(x, ..., m = TRUE) {
   if (length(vars) == 0L) {
     ftab(x, ..., m = m)
   } else {
-    for (i in 1L:length(vars)) {
-      tab(x = x, `!!`(vars[[i]]), m = m)
-      if (i < length(vars)) {
+    vars <- lapply(vars, rlang::env_bury, !!!helpers)
+    varnames <- tidyselect::vars_select(names(x), !!!vars)
+    for (i in seq_along(varnames)) {
+      tmp <- dplyr::select(x, !!!varnames[[i]])
+      tab(tmp, !!varnames[[i]], m = m)
+      if (i < length(varnames)) {
         cat("\n")
       }
     }
@@ -166,12 +178,18 @@ tab1 <- function(x, ..., m = TRUE) {
 #' @export
 tab2 <- function(x, ..., m = TRUE) {
   vars <- rlang::quos(...)
+  vars <- lapply(vars, rlang::env_bury, !!!helpers)
+  varnames <- tidyselect::vars_select(names(x), !!!vars)
+  if (length(varnames) < 2L) {
+    stop("tab2() must have at least two variables")
+  }
+  x <- dplyr::select(x, !!!varnames)
   filter <- function(x, y) {
     x <= y
   }
-  tab_sequence <- purrr::cross2(1L:length(vars), 1L:length(vars), .filter = filter)
-  for (i in 1L:length(tab_sequence)) {
-    tab(x = x, `!!`(vars[[purrr::as_vector(tab_sequence[[i]])[2]]]), `!!`(vars[[purrr::as_vector(tab_sequence[[i]])[1]]]), m = m)
+  tab_sequence <- purrr::cross2(seq_along(varnames), seq_along(varnames), .filter = filter)
+  for (i in seq_along(tab_sequence)) {
+    tab(x = x, !!varnames[[purrr::as_vector(tab_sequence[[i]])[2]]], !!varnames[[purrr::as_vector(tab_sequence[[i]])[1]]], m = m)
     cat("\n")
   }
 }
