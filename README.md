@@ -102,7 +102,7 @@ mtcars %>% tab(cyl, gear, am, vs)
 #>           8 │        93.5
 #>           8 │        99.7
 
-# missing values are displayed in tidyverse red
+# missing values are displayed in red
 tab(letters[24:27])
 #>   letters[24:27] │      Freq.     Percent        Cum. 
 #> ─────────────────┼───────────────────────────────────
