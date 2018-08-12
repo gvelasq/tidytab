@@ -134,7 +134,7 @@ The convenience functions tab1() and tab2() are inspired by functions of the sam
     </tr>
     <tr>
       <th>...</th>
-      <td><p>A comma separated list of unquoted variable names.</p></td>
+      <td><p>A comma separated list of unquoted variable names or positions. Select helpers from <a href='https://dplyr.tidyverse.org/reference/select_helpers.html'>dplyr</a> and <a href='https://www.rdocumentation.org/packages/tidyselect/versions/0.2.4/topics/select_helpers'>tidyselect</a> are supported.</p></td>
     </tr>
     <tr>
       <th>m</th>
@@ -155,8 +155,9 @@ The convenience functions tab1() and tab2() are inspired by functions of the sam
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>The statar package by Matthieu Gomez provides a <code>tab()</code> function with output similar to tidytab's <code>ftab()</code>. Both packages use a variant of <a href='https://github.com/g-velasq/statascii'>statascii()</a> to format tables for display in the <code>R</code> console. Differences between the packages include:</p><ul>
-<li><p>tidytab displays tables in tidyverse colors: grey for block drawing characters and red for <code>NA</code>s.</p></li>
+    <div class='dont-index'><p>The statar package by Matthieu Gomez provides a <code>tab()</code> function with output similar to tidytab's <code>ftab()</code>. Both packages use a variant of <a href='https://github.com/gvelasq/statascii'>statascii()</a> to format tables for display in the <code>R</code> console. Differences between the packages include:</p><ul>
+<li><p>tidytab supports select helpers from <a href='https://dplyr.tidyverse.org/reference/select_helpers.html'>dplyr</a> and <a href='https://www.rdocumentation.org/packages/tidyselect/versions/0.2.4/topics/select_helpers'>tidyselect</a>.</p></li>
+<li><p>tidytab displays tables in colors: dark grey for block drawing characters and red for <code>NA</code>s.</p></li>
 <li><p>tidytab allows for tabulation of named and unnamed vectors.</p></li>
 <li><p>tidytab implements automatic table wrapping for tables wider than the <code>R</code> console.</p></li>
 <li><p>tidytab's <code>tab()</code> and <code>ftab()</code> display a total row with total frequencies for one-way tabulations.</p></li>
@@ -164,7 +165,7 @@ The convenience functions tab1() and tab2() are inspired by functions of the sam
 <li><p>tidytab's convenience functions <code>tab1()</code> and <code>tab2()</code> allow for rapid tabulation of a set of variables into either one- or two-way tables.</p></li>
 </ul></div>
     <div class='dont-index'><p>The janitor package by Sam Firke provides the <code>tabyl()</code> function for SPSS-like tables of frequencies and adornments.</p>
-<p>Base <code>R</code> provides the <code>base::ftable()</code> and <code><a href='http://www.rdocumentation.org/packages/stats/topics/xtabs'>stats::xtabs()</a></code> functions for unadorned tables of frequencies.</p></div>
+<p>Base <code>R</code> provides the <code>ftable()</code> and <code>xtabs()</code> functions for unadorned tables of frequencies.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -188,51 +189,51 @@ The convenience functions tab1() and tab2() are inspired by functions of the sam
 <span class='co'># flat contingency tables of three (or more) variables</span>
 <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span> <span class='fu'>tab</span>(<span class='no'>cyl</span>, <span class='no'>gear</span>, <span class='no'>am</span>)</div><div class='output co'>#&gt;         cyl │       gear          am       Freq.     Percent        Cum. 
 #&gt; ────────────┼───────────────────────────────────────────────────────────
-#&gt;           4 │          3           0           1         3.1         3.1 
-#&gt;           4 │          4           0           2         6.2         9.3 
-#&gt;           4 │          4           1           6        18.8        28.1 
-#&gt;           4 │          5           1           2         6.2        34.3 
+#&gt;           4 │          3           0           1       100.0       100.0 
+#&gt;           4 │          4           0           2        25.0        25.0 
+#&gt;           4 │          4           1           6        75.0       100.0 
+#&gt;           4 │          5           1           2       100.0       100.0 
 #&gt; ------------┼-----------------------------------------------------------
-#&gt;           6 │          3           0           2         6.2        40.5 
-#&gt;           6 │          4           0           2         6.2        46.7 
-#&gt;           6 │          4           1           2         6.2        52.9 
-#&gt;           6 │          5           1           1         3.1        56.0 
+#&gt;           6 │          3           0           2       100.0       100.0 
+#&gt;           6 │          4           0           2        50.0        50.0 
+#&gt;           6 │          4           1           2        50.0       100.0 
+#&gt;           6 │          5           1           1       100.0       100.0 
 #&gt; ------------┼-----------------------------------------------------------
-#&gt;           8 │          3           0          12        37.5        93.5 
-#&gt;           8 │          5           1           2         6.2        99.7 </div><div class='input'>
+#&gt;           8 │          3           0          12       100.0       100.0 
+#&gt;           8 │          5           1           2       100.0       100.0 </div><div class='input'>
 <span class='co'># tables wider than the R console are automatically wrapped</span>
 <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span> <span class='fu'>tab</span>(<span class='no'>cyl</span>, <span class='no'>gear</span>, <span class='no'>am</span>, <span class='no'>vs</span>)</div><div class='output co'>#&gt;         cyl │       gear          am          vs       Freq.     Percent
 #&gt; ────────────┼───────────────────────────────────────────────────────────
-#&gt;           4 │          3           0           1           1         3.1
-#&gt;           4 │          4           0           1           2         6.2
-#&gt;           4 │          4           1           1           6        18.8
-#&gt;           4 │          5           1           0           1         3.1
-#&gt;           4 │          5           1           1           1         3.1
+#&gt;           4 │          3           0           1           1       100.0
+#&gt;           4 │          4           0           1           2       100.0
+#&gt;           4 │          4           1           1           6       100.0
+#&gt;           4 │          5           1           0           1        50.0
+#&gt;           4 │          5           1           1           1        50.0
 #&gt; ------------┼-----------------------------------------------------------
-#&gt;           6 │          3           0           1           2         6.2
-#&gt;           6 │          4           0           1           2         6.2
-#&gt;           6 │          4           1           0           2         6.2
-#&gt;           6 │          5           1           0           1         3.1
+#&gt;           6 │          3           0           1           2       100.0
+#&gt;           6 │          4           0           1           2       100.0
+#&gt;           6 │          4           1           0           2       100.0
+#&gt;           6 │          5           1           0           1       100.0
 #&gt; ------------┼-----------------------------------------------------------
-#&gt;           8 │          3           0           0          12        37.5
-#&gt;           8 │          5           1           0           2         6.2
+#&gt;           8 │          3           0           0          12       100.0
+#&gt;           8 │          5           1           0           2       100.0
 #&gt; 
 #&gt;         cyl │        Cum.
 #&gt; ────────────┼────────────
-#&gt;           4 │         3.1
-#&gt;           4 │         9.3
-#&gt;           4 │        28.1
-#&gt;           4 │        31.2
-#&gt;           4 │        34.3
+#&gt;           4 │       100.0
+#&gt;           4 │       100.0
+#&gt;           4 │       100.0
+#&gt;           4 │        50.0
+#&gt;           4 │       100.0
 #&gt; ------------┼------------
-#&gt;           6 │        40.5
-#&gt;           6 │        46.7
-#&gt;           6 │        52.9
-#&gt;           6 │        56.0
+#&gt;           6 │       100.0
+#&gt;           6 │       100.0
+#&gt;           6 │       100.0
+#&gt;           6 │       100.0
 #&gt; ------------┼------------
-#&gt;           8 │        93.5
-#&gt;           8 │        99.7</div><div class='input'>
-<span class='co'># missing values are displayed in tidyverse red</span>
+#&gt;           8 │       100.0
+#&gt;           8 │       100.0</div><div class='input'>
+<span class='co'># missing values are displayed in red</span>
 <span class='fu'>tab</span>(<span class='no'>letters</span>[<span class='fl'>24</span>:<span class='fl'>27</span>])</div><div class='output co'>#&gt;   letters[24:27] │      Freq.     Percent        Cum. 
 #&gt; ─────────────────┼───────────────────────────────────
 #&gt;                x │          1        25.0        25.0 
@@ -244,16 +245,16 @@ The convenience functions tab1() and tab2() are inspired by functions of the sam
 <span class='co'># ftab() displays only flat contingency tables (here, with two variables)</span>
 <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span> <span class='fu'>ftab</span>(<span class='no'>cyl</span>, <span class='no'>gear</span>)</div><div class='output co'>#&gt;         cyl │       gear       Freq.     Percent        Cum. 
 #&gt; ────────────┼───────────────────────────────────────────────
-#&gt;           4 │          3           1         3.1         3.1 
-#&gt;           4 │          4           8        25.0        28.1 
-#&gt;           4 │          5           2         6.2        34.3 
+#&gt;           4 │          3           1         9.1         9.1 
+#&gt;           4 │          4           8        72.7        81.8 
+#&gt;           4 │          5           2        18.2       100.0 
 #&gt; ------------┼-----------------------------------------------
-#&gt;           6 │          3           2         6.2        40.5 
-#&gt;           6 │          4           4        12.5        53.0 
-#&gt;           6 │          5           1         3.1        56.1 
+#&gt;           6 │          3           2        28.6        28.6 
+#&gt;           6 │          4           4        57.1        85.7 
+#&gt;           6 │          5           1        14.3       100.0 
 #&gt; ------------┼-----------------------------------------------
-#&gt;           8 │          3          12        37.5        93.6 
-#&gt;           8 │          5           2         6.2        99.8 </div><div class='input'>
+#&gt;           8 │          3          12        85.7        85.7 
+#&gt;           8 │          5           2        14.3       100.0 </div><div class='input'>
 <span class='co'># tab1() displays one-way tables for each variable</span>
 <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span> <span class='fu'>tab1</span>(<span class='no'>cyl</span>, <span class='no'>gear</span>)</div><div class='output co'>#&gt;         cyl │      Freq.     Percent        Cum. 
 #&gt; ────────────┼───────────────────────────────────
