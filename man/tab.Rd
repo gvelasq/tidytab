@@ -21,7 +21,7 @@ tab2(x, ..., m = TRUE)
 \arguments{
 \item{x}{A vector, data.frame, or tibble.}
 
-\item{...}{A comma separated list of unquoted variable names.}
+\item{...}{A comma separated list of unquoted variable names or positions. Select helpers from \href{https://dplyr.tidyverse.org/reference/select_helpers.html}{dplyr} and \href{https://www.rdocumentation.org/packages/tidyselect/versions/0.2.4/topics/select_helpers}{tidyselect} are supported.}
 
 \item{m}{If \code{TRUE} (the default), missing values are reported.}
 }
@@ -57,7 +57,7 @@ mtcars \%>\% tab(cyl, gear, am)
 # tables wider than the R console are automatically wrapped
 mtcars \%>\% tab(cyl, gear, am, vs)
 
-# missing values are displayed in tidyverse red
+# missing values are displayed in red
 tab(letters[24:27])
 
 # ftab() displays only flat contingency tables (here, with two variables)
@@ -74,9 +74,10 @@ mtcars \%>\% ta(gear)
 
 }
 \seealso{
-The statar package by Matthieu Gomez provides a \code{tab()} function with output similar to tidytab's \code{ftab()}. Both packages use a variant of \href{https://github.com/g-velasq/statascii}{statascii()} to format tables for display in the \code{R} console. Differences between the packages include:
+The statar package by Matthieu Gomez provides a \code{tab()} function with output similar to tidytab's \code{ftab()}. Both packages use a variant of \href{https://github.com/gvelasq/statascii}{statascii()} to format tables for display in the \code{R} console. Differences between the packages include:
 \itemize{
-\item tidytab displays tables in tidyverse colors: grey for block drawing characters and red for \code{NA}s.
+\item tidytab supports select helpers from \href{https://dplyr.tidyverse.org/reference/select_helpers.html}{dplyr} and \href{https://www.rdocumentation.org/packages/tidyselect/versions/0.2.4/topics/select_helpers}{tidyselect}.
+\item tidytab displays tables in colors: dark grey for block drawing characters and red for \code{NA}s.
 \item tidytab allows for tabulation of named and unnamed vectors.
 \item tidytab implements automatic table wrapping for tables wider than the \code{R} console.
 \item tidytab's \code{tab()} and \code{ftab()} display a total row with total frequencies for one-way tabulations.
@@ -86,5 +87,5 @@ The statar package by Matthieu Gomez provides a \code{tab()} function with outpu
 
 The janitor package by Sam Firke provides the \code{tabyl()} function for SPSS-like tables of frequencies and adornments.
 
-Base \code{R} provides the \code{base::ftable()} and \code{stats::xtabs()} functions for unadorned tables of frequencies.
+Base \code{R} provides the \code{ftable()} and \code{xtabs()} functions for unadorned tables of frequencies.
 }

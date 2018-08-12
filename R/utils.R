@@ -2,6 +2,8 @@
 #' @noRd
 #' @importFrom rlang .data := %|% !!
 
+globalVariables("n")
+
 helpers <- tidyselect::vars_select_helpers
 
 x_env <- new.env(parent = emptyenv())
@@ -20,8 +22,12 @@ reset_x_name <- function() {
 
 ctab <- function(x, ..., m = TRUE) {
   vars <- rlang::quos(...)
-  if (length(vars) == 2L) {
-    x <- dplyr::count(x, ...)
+  vars <- lapply(vars, rlang::env_bury, !!!helpers)
+  varnames <- tidyselect::vars_select(names(x), !!!vars)
+  if (length(varnames) == 2L) {
+    x <- dplyr::select(x, !!!varnames)
+    x <- dplyr::group_by_at(x, names(varnames))
+    x <- dplyr::summarize(x, n = n())
     if (m == FALSE) {
       x <- stats::na.omit(x)
     }
@@ -31,13 +37,11 @@ ctab <- function(x, ..., m = TRUE) {
     df_to_return <- tibble::as_tibble(x)
     attr(df_to_return, "topvar") <- topvar
     total_col <- rowSums(x[-1L], na.rm = TRUE)
-    x <- cbind(x, total_col)
+    x <- cbind(x, Total = total_col)
     total_row <- colSums(x[-1L], na.rm = TRUE)
-    total_row <- c(NA, total_row)
     x <- rbind(x, total_row)
     x <- purrr::map_df(x, as.character)
     x[nrow(x), 1] <- "Total"
-    colnames(x)[ncol(x)] <- "Total"
     statascii(x, flavor = "contingency", topvar = topvar)
     invisible(df_to_return)
   } else {
