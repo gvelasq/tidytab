@@ -1,6 +1,6 @@
 #' @keywords internal
 #' @noRd
-#' @importFrom rlang .data := %|% !!
+#' @importFrom rlang .data := %|%
 
 globalVariables("n")
 
