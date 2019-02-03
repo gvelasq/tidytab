@@ -1,6 +1,6 @@
 #' Browse data
 #'
-#' @description `br()` is an alias for `utils::View()` and invokes the data viewer. See `utils::View()` for details.
+#' @description `br()` is an alias for `utils::View()` and invokes the data viewer. See `utils::View()` for details. `br()` invisibly returns its input so that it can be dropped into magrittr pipe chains.
 #'
 #' @usage
 #' br(x, title)
@@ -15,4 +15,5 @@ br <- function(x, title) {
     title_expr <- rlang::quo_name(rlang::enexpr(x))
   }
   get("View", envir = as.environment("package:utils"))(x, title = title_expr)
+  invisible(x)
 }
