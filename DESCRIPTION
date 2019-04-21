@@ -1,7 +1,11 @@
 Package: tidytab
 Title: Create Tables of Frequencies
 Version: 0.0.0.9000
-Authors@R: person("Gustavo","Velásquez", email = "gvelasq2github@gmail.com", role = c("aut", "cre"))
+Authors@R: 
+    person(given = "Gustavo",
+           family = "Velásquez",
+           role = c("aut", "cre"),
+           email = "gvelasq2github@gmail.com")
 Author: Gustavo Velásquez <gvelasq2github@gmail.com>
 Maintainer: Gustavo Velásquez <gvelasq2github@gmail.com>
 Description: Functions to create tables of frequencies.
@@ -33,4 +37,4 @@ ByteCompile: true
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
