@@ -12,5 +12,5 @@ br(x, title)
 \item{title}{Optional title for viewer window.}
 }
 \description{
-\code{br()} is an alias for \code{utils::View()} and invokes the data viewer. See \code{utils::View()} for details.
+\code{br()} is an alias for \code{utils::View()} and invokes the data viewer. See \code{utils::View()} for details. \code{br()} invisibly returns its input so that it can be dropped into magrittr pipe chains.
 }
