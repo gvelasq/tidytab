@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Create Tables of Frequencies • tidytab</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Create Tables of Frequencies">
 <meta property="og:description" content="Functions to create tables of frequencies.">
 <meta name="twitter:card" content="summary">
@@ -18,7 +19,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-article">
+    <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -38,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -52,7 +53,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/gvelasq/tidytab">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -65,13 +66,9 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
-  <div class="col-md-9 contents">
-    
 
-    
-    
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+      </header><div class="row">
+  <div class="contents col-md-9">
 <div id="tidytab" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#tidytab" class="anchor"></a>tidytab</h1></div>
@@ -88,7 +85,7 @@
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># setup (tidytab automatically exports the magrittr pipe)</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidytab)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidytab)</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co"># one-way table of frequencies</span></a>
 <a class="sourceLine" id="cb2-5" data-line-number="5">mtcars <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="reference/tab.html">tab</a></span>(cyl)</a>
@@ -115,61 +112,61 @@
 <a class="sourceLine" id="cb2-26" data-line-number="26">mtcars <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="reference/tab.html">tab</a></span>(cyl, gear, am)</a>
 <a class="sourceLine" id="cb2-27" data-line-number="27"><span class="co">#&gt;         cyl │       gear          am       Freq.     Percent        Cum. </span></a>
 <a class="sourceLine" id="cb2-28" data-line-number="28"><span class="co">#&gt; ────────────┼───────────────────────────────────────────────────────────</span></a>
-<a class="sourceLine" id="cb2-29" data-line-number="29"><span class="co">#&gt;           4 │          3           0           1       100.0       100.0 </span></a>
-<a class="sourceLine" id="cb2-30" data-line-number="30"><span class="co">#&gt;           4 │          4           0           2        25.0        25.0 </span></a>
-<a class="sourceLine" id="cb2-31" data-line-number="31"><span class="co">#&gt;           4 │          4           1           6        75.0       100.0 </span></a>
-<a class="sourceLine" id="cb2-32" data-line-number="32"><span class="co">#&gt;           4 │          5           1           2       100.0       100.0 </span></a>
+<a class="sourceLine" id="cb2-29" data-line-number="29"><span class="co">#&gt;           4 │          3           0           1         3.1         3.1 </span></a>
+<a class="sourceLine" id="cb2-30" data-line-number="30"><span class="co">#&gt;           4 │          4           0           2         6.2         9.3 </span></a>
+<a class="sourceLine" id="cb2-31" data-line-number="31"><span class="co">#&gt;           4 │          4           1           6        18.8        28.1 </span></a>
+<a class="sourceLine" id="cb2-32" data-line-number="32"><span class="co">#&gt;           4 │          5           1           2         6.2        34.3 </span></a>
 <a class="sourceLine" id="cb2-33" data-line-number="33"><span class="co">#&gt; ------------┼-----------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb2-34" data-line-number="34"><span class="co">#&gt;           6 │          3           0           2       100.0       100.0 </span></a>
-<a class="sourceLine" id="cb2-35" data-line-number="35"><span class="co">#&gt;           6 │          4           0           2        50.0        50.0 </span></a>
-<a class="sourceLine" id="cb2-36" data-line-number="36"><span class="co">#&gt;           6 │          4           1           2        50.0       100.0 </span></a>
-<a class="sourceLine" id="cb2-37" data-line-number="37"><span class="co">#&gt;           6 │          5           1           1       100.0       100.0 </span></a>
+<a class="sourceLine" id="cb2-34" data-line-number="34"><span class="co">#&gt;           6 │          3           0           2         6.2        40.5 </span></a>
+<a class="sourceLine" id="cb2-35" data-line-number="35"><span class="co">#&gt;           6 │          4           0           2         6.2        46.7 </span></a>
+<a class="sourceLine" id="cb2-36" data-line-number="36"><span class="co">#&gt;           6 │          4           1           2         6.2        52.9 </span></a>
+<a class="sourceLine" id="cb2-37" data-line-number="37"><span class="co">#&gt;           6 │          5           1           1         3.1        56.0 </span></a>
 <a class="sourceLine" id="cb2-38" data-line-number="38"><span class="co">#&gt; ------------┼-----------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb2-39" data-line-number="39"><span class="co">#&gt;           8 │          3           0          12       100.0       100.0 </span></a>
-<a class="sourceLine" id="cb2-40" data-line-number="40"><span class="co">#&gt;           8 │          5           1           2       100.0       100.0</span></a>
+<a class="sourceLine" id="cb2-39" data-line-number="39"><span class="co">#&gt;           8 │          3           0          12        37.5        93.5 </span></a>
+<a class="sourceLine" id="cb2-40" data-line-number="40"><span class="co">#&gt;           8 │          5           1           2         6.2        99.7</span></a>
 <a class="sourceLine" id="cb2-41" data-line-number="41"></a>
 <a class="sourceLine" id="cb2-42" data-line-number="42"><span class="co"># tables wider than the R console are automatically wrapped</span></a>
 <a class="sourceLine" id="cb2-43" data-line-number="43">mtcars <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="reference/tab.html">tab</a></span>(cyl, gear, am, vs)</a>
 <a class="sourceLine" id="cb2-44" data-line-number="44"><span class="co">#&gt;         cyl │       gear          am          vs       Freq.     Percent</span></a>
 <a class="sourceLine" id="cb2-45" data-line-number="45"><span class="co">#&gt; ────────────┼───────────────────────────────────────────────────────────</span></a>
-<a class="sourceLine" id="cb2-46" data-line-number="46"><span class="co">#&gt;           4 │          3           0           1           1       100.0</span></a>
-<a class="sourceLine" id="cb2-47" data-line-number="47"><span class="co">#&gt;           4 │          4           0           1           2       100.0</span></a>
-<a class="sourceLine" id="cb2-48" data-line-number="48"><span class="co">#&gt;           4 │          4           1           1           6       100.0</span></a>
-<a class="sourceLine" id="cb2-49" data-line-number="49"><span class="co">#&gt;           4 │          5           1           0           1        50.0</span></a>
-<a class="sourceLine" id="cb2-50" data-line-number="50"><span class="co">#&gt;           4 │          5           1           1           1        50.0</span></a>
+<a class="sourceLine" id="cb2-46" data-line-number="46"><span class="co">#&gt;           4 │          3           0           1           1         3.1</span></a>
+<a class="sourceLine" id="cb2-47" data-line-number="47"><span class="co">#&gt;           4 │          4           0           1           2         6.2</span></a>
+<a class="sourceLine" id="cb2-48" data-line-number="48"><span class="co">#&gt;           4 │          4           1           1           6        18.8</span></a>
+<a class="sourceLine" id="cb2-49" data-line-number="49"><span class="co">#&gt;           4 │          5           1           0           1         3.1</span></a>
+<a class="sourceLine" id="cb2-50" data-line-number="50"><span class="co">#&gt;           4 │          5           1           1           1         3.1</span></a>
 <a class="sourceLine" id="cb2-51" data-line-number="51"><span class="co">#&gt; ------------┼-----------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb2-52" data-line-number="52"><span class="co">#&gt;           6 │          3           0           1           2       100.0</span></a>
-<a class="sourceLine" id="cb2-53" data-line-number="53"><span class="co">#&gt;           6 │          4           0           1           2       100.0</span></a>
-<a class="sourceLine" id="cb2-54" data-line-number="54"><span class="co">#&gt;           6 │          4           1           0           2       100.0</span></a>
-<a class="sourceLine" id="cb2-55" data-line-number="55"><span class="co">#&gt;           6 │          5           1           0           1       100.0</span></a>
+<a class="sourceLine" id="cb2-52" data-line-number="52"><span class="co">#&gt;           6 │          3           0           1           2         6.2</span></a>
+<a class="sourceLine" id="cb2-53" data-line-number="53"><span class="co">#&gt;           6 │          4           0           1           2         6.2</span></a>
+<a class="sourceLine" id="cb2-54" data-line-number="54"><span class="co">#&gt;           6 │          4           1           0           2         6.2</span></a>
+<a class="sourceLine" id="cb2-55" data-line-number="55"><span class="co">#&gt;           6 │          5           1           0           1         3.1</span></a>
 <a class="sourceLine" id="cb2-56" data-line-number="56"><span class="co">#&gt; ------------┼-----------------------------------------------------------</span></a>
-<a class="sourceLine" id="cb2-57" data-line-number="57"><span class="co">#&gt;           8 │          3           0           0          12       100.0</span></a>
-<a class="sourceLine" id="cb2-58" data-line-number="58"><span class="co">#&gt;           8 │          5           1           0           2       100.0</span></a>
+<a class="sourceLine" id="cb2-57" data-line-number="57"><span class="co">#&gt;           8 │          3           0           0          12        37.5</span></a>
+<a class="sourceLine" id="cb2-58" data-line-number="58"><span class="co">#&gt;           8 │          5           1           0           2         6.2</span></a>
 <a class="sourceLine" id="cb2-59" data-line-number="59"><span class="co">#&gt; </span></a>
 <a class="sourceLine" id="cb2-60" data-line-number="60"><span class="co">#&gt;         cyl │        Cum.</span></a>
 <a class="sourceLine" id="cb2-61" data-line-number="61"><span class="co">#&gt; ────────────┼────────────</span></a>
-<a class="sourceLine" id="cb2-62" data-line-number="62"><span class="co">#&gt;           4 │       100.0</span></a>
-<a class="sourceLine" id="cb2-63" data-line-number="63"><span class="co">#&gt;           4 │       100.0</span></a>
-<a class="sourceLine" id="cb2-64" data-line-number="64"><span class="co">#&gt;           4 │       100.0</span></a>
-<a class="sourceLine" id="cb2-65" data-line-number="65"><span class="co">#&gt;           4 │        50.0</span></a>
-<a class="sourceLine" id="cb2-66" data-line-number="66"><span class="co">#&gt;           4 │       100.0</span></a>
+<a class="sourceLine" id="cb2-62" data-line-number="62"><span class="co">#&gt;           4 │         3.1</span></a>
+<a class="sourceLine" id="cb2-63" data-line-number="63"><span class="co">#&gt;           4 │         9.3</span></a>
+<a class="sourceLine" id="cb2-64" data-line-number="64"><span class="co">#&gt;           4 │        28.1</span></a>
+<a class="sourceLine" id="cb2-65" data-line-number="65"><span class="co">#&gt;           4 │        31.2</span></a>
+<a class="sourceLine" id="cb2-66" data-line-number="66"><span class="co">#&gt;           4 │        34.3</span></a>
 <a class="sourceLine" id="cb2-67" data-line-number="67"><span class="co">#&gt; ------------┼------------</span></a>
-<a class="sourceLine" id="cb2-68" data-line-number="68"><span class="co">#&gt;           6 │       100.0</span></a>
-<a class="sourceLine" id="cb2-69" data-line-number="69"><span class="co">#&gt;           6 │       100.0</span></a>
-<a class="sourceLine" id="cb2-70" data-line-number="70"><span class="co">#&gt;           6 │       100.0</span></a>
-<a class="sourceLine" id="cb2-71" data-line-number="71"><span class="co">#&gt;           6 │       100.0</span></a>
+<a class="sourceLine" id="cb2-68" data-line-number="68"><span class="co">#&gt;           6 │        40.5</span></a>
+<a class="sourceLine" id="cb2-69" data-line-number="69"><span class="co">#&gt;           6 │        46.7</span></a>
+<a class="sourceLine" id="cb2-70" data-line-number="70"><span class="co">#&gt;           6 │        52.9</span></a>
+<a class="sourceLine" id="cb2-71" data-line-number="71"><span class="co">#&gt;           6 │        56.0</span></a>
 <a class="sourceLine" id="cb2-72" data-line-number="72"><span class="co">#&gt; ------------┼------------</span></a>
-<a class="sourceLine" id="cb2-73" data-line-number="73"><span class="co">#&gt;           8 │       100.0</span></a>
-<a class="sourceLine" id="cb2-74" data-line-number="74"><span class="co">#&gt;           8 │       100.0</span></a>
+<a class="sourceLine" id="cb2-73" data-line-number="73"><span class="co">#&gt;           8 │        93.5</span></a>
+<a class="sourceLine" id="cb2-74" data-line-number="74"><span class="co">#&gt;           8 │        99.7</span></a>
 <a class="sourceLine" id="cb2-75" data-line-number="75"></a>
 <a class="sourceLine" id="cb2-76" data-line-number="76"><span class="co"># missing values are displayed in red</span></a>
 <a class="sourceLine" id="cb2-77" data-line-number="77"><span class="kw"><a href="reference/tab.html">tab</a></span>(letters[<span class="dv">24</span><span class="op">:</span><span class="dv">27</span>])</a>
 <a class="sourceLine" id="cb2-78" data-line-number="78"><span class="co">#&gt;   letters[24:27] │      Freq.     Percent        Cum. </span></a>
 <a class="sourceLine" id="cb2-79" data-line-number="79"><span class="co">#&gt; ─────────────────┼───────────────────────────────────</span></a>
-<a class="sourceLine" id="cb2-80" data-line-number="80"><span class="co">#&gt;               NA │          1        25.0        25.0 </span></a>
-<a class="sourceLine" id="cb2-81" data-line-number="81"><span class="co">#&gt;                x │          1        25.0        50.0 </span></a>
-<a class="sourceLine" id="cb2-82" data-line-number="82"><span class="co">#&gt;                y │          1        25.0        75.0 </span></a>
-<a class="sourceLine" id="cb2-83" data-line-number="83"><span class="co">#&gt;                z │          1        25.0       100.0 </span></a>
+<a class="sourceLine" id="cb2-80" data-line-number="80"><span class="co">#&gt;                x │          1        25.0        25.0 </span></a>
+<a class="sourceLine" id="cb2-81" data-line-number="81"><span class="co">#&gt;                y │          1        25.0        50.0 </span></a>
+<a class="sourceLine" id="cb2-82" data-line-number="82"><span class="co">#&gt;                z │          1        25.0        75.0 </span></a>
+<a class="sourceLine" id="cb2-83" data-line-number="83"><span class="co">#&gt;               NA │          1        25.0       100.0 </span></a>
 <a class="sourceLine" id="cb2-84" data-line-number="84"><span class="co">#&gt; ─────────────────┼───────────────────────────────────</span></a>
 <a class="sourceLine" id="cb2-85" data-line-number="85"><span class="co">#&gt;            Total │          4       100.0           </span></a>
 <a class="sourceLine" id="cb2-86" data-line-number="86"></a>
@@ -177,16 +174,16 @@
 <a class="sourceLine" id="cb2-88" data-line-number="88">mtcars <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="reference/tab.html">ftab</a></span>(cyl, gear)</a>
 <a class="sourceLine" id="cb2-89" data-line-number="89"><span class="co">#&gt;         cyl │       gear       Freq.     Percent        Cum. </span></a>
 <a class="sourceLine" id="cb2-90" data-line-number="90"><span class="co">#&gt; ────────────┼───────────────────────────────────────────────</span></a>
-<a class="sourceLine" id="cb2-91" data-line-number="91"><span class="co">#&gt;           4 │          3           1         9.1         9.1 </span></a>
-<a class="sourceLine" id="cb2-92" data-line-number="92"><span class="co">#&gt;           4 │          4           8        72.7        81.8 </span></a>
-<a class="sourceLine" id="cb2-93" data-line-number="93"><span class="co">#&gt;           4 │          5           2        18.2       100.0 </span></a>
+<a class="sourceLine" id="cb2-91" data-line-number="91"><span class="co">#&gt;           4 │          3           1         3.1         3.1 </span></a>
+<a class="sourceLine" id="cb2-92" data-line-number="92"><span class="co">#&gt;           4 │          4           8        25.0        28.1 </span></a>
+<a class="sourceLine" id="cb2-93" data-line-number="93"><span class="co">#&gt;           4 │          5           2         6.2        34.3 </span></a>
 <a class="sourceLine" id="cb2-94" data-line-number="94"><span class="co">#&gt; ------------┼-----------------------------------------------</span></a>
-<a class="sourceLine" id="cb2-95" data-line-number="95"><span class="co">#&gt;           6 │          3           2        28.6        28.6 </span></a>
-<a class="sourceLine" id="cb2-96" data-line-number="96"><span class="co">#&gt;           6 │          4           4        57.1        85.7 </span></a>
-<a class="sourceLine" id="cb2-97" data-line-number="97"><span class="co">#&gt;           6 │          5           1        14.3       100.0 </span></a>
+<a class="sourceLine" id="cb2-95" data-line-number="95"><span class="co">#&gt;           6 │          3           2         6.2        40.5 </span></a>
+<a class="sourceLine" id="cb2-96" data-line-number="96"><span class="co">#&gt;           6 │          4           4        12.5        53.0 </span></a>
+<a class="sourceLine" id="cb2-97" data-line-number="97"><span class="co">#&gt;           6 │          5           1         3.1        56.1 </span></a>
 <a class="sourceLine" id="cb2-98" data-line-number="98"><span class="co">#&gt; ------------┼-----------------------------------------------</span></a>
-<a class="sourceLine" id="cb2-99" data-line-number="99"><span class="co">#&gt;           8 │          3          12        85.7        85.7 </span></a>
-<a class="sourceLine" id="cb2-100" data-line-number="100"><span class="co">#&gt;           8 │          5           2        14.3       100.0</span></a>
+<a class="sourceLine" id="cb2-99" data-line-number="99"><span class="co">#&gt;           8 │          3          12        37.5        93.6 </span></a>
+<a class="sourceLine" id="cb2-100" data-line-number="100"><span class="co">#&gt;           8 │          5           2         6.2        99.8</span></a>
 <a class="sourceLine" id="cb2-101" data-line-number="101"></a>
 <a class="sourceLine" id="cb2-102" data-line-number="102"><span class="co"># tab1() displays one-way tables for each variable</span></a>
 <a class="sourceLine" id="cb2-103" data-line-number="103">mtcars <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="reference/tab.html">tab1</a></span>(cyl, gear)</a>
@@ -267,6 +264,13 @@
 <li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+<div class="community">
+<h2>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
+<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+</ul>
+</div>
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
@@ -274,8 +278,7 @@
 </ul>
 </div>
 
-      </div>
-
+  </div>
 </div>
 
 
@@ -284,12 +287,14 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>
