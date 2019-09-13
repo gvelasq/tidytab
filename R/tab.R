@@ -19,7 +19,7 @@
 #' tab2(x, ..., m = TRUE)
 #'
 #' @param x A vector, data.frame, or tibble.
-#' @param ... A comma separated list of unquoted variable names or positions. Select helpers from [dplyr](https://dplyr.tidyverse.org/reference/select_helpers.html) and [tidyselect](https://www.rdocumentation.org/packages/tidyselect/versions/0.2.4/topics/select_helpers) are supported.
+#' @param ... A comma separated list of unquoted variable names or positions. Select helpers from [dplyr](https://dplyr.tidyverse.org/reference/select.html) and [tidyselect](https://rdrr.io/cran/tidyselect/man/select_helpers.html) are supported.
 #' @param m If `TRUE` (the default), missing values are reported.
 #'
 #' @details
@@ -37,7 +37,7 @@
 #' @seealso
 #' The statar package by Matthieu Gomez provides a `tab()` function with output similar to tidytab's `ftab()`. Both packages use a variant of [`statascii()`](https://github.com/gvelasq/statascii) to format tables for display in the `R` console. Differences between the packages include:
 #'
-#' * tidytab supports select helpers from [dplyr](https://dplyr.tidyverse.org/reference/select_helpers.html) and [tidyselect](https://www.rdocumentation.org/packages/tidyselect/versions/0.2.4/topics/select_helpers).
+#' * tidytab supports select helpers from [dplyr](https://dplyr.tidyverse.org/reference/select.html) and [tidyselect](https://rdrr.io/cran/tidyselect/man/select_helpers.html).
 #' * tidytab displays tables in colors: dark grey for block drawing characters and red for `NA`s.
 #' * tidytab allows for tabulation of named and unnamed vectors.
 #' * tidytab implements automatic table wrapping for tables wider than the `R` console.
