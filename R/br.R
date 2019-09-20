@@ -10,6 +10,7 @@
 #'
 #' @export
 br <- function(x, title) {
+  if (!interactive()) return(invisible(x))
   title_expr <- rlang::quo_name(rlang::enexpr(title))
   if (title_expr == "") {
     title_expr <- rlang::quo_name(rlang::enexpr(x))
