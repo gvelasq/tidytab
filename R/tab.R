@@ -125,7 +125,7 @@ ftab <- function(x, ..., m = TRUE) {
   vars <- rlang::quos(...)
   if (length(vars) == 0L) {
     if (rlang::is_atomic(x) == TRUE) {
-      x <- tibble::as_tibble(x)
+      x <- tibble::enframe(x, name = NULL)
       x <- dplyr::count(x, .data$value)
       x <- dplyr::rename(x, !!x_name := .data$value, Freq. = .data$n)
     }
