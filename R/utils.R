@@ -27,7 +27,7 @@ ctab <- function(x, ..., m = TRUE) {
   if (length(varnames) == 2L) {
     x <- dplyr::select(x, !!!varnames)
     x <- dplyr::group_by_at(x, names(varnames))
-    x <- dplyr::summarize(x, n = n())
+    x <- dplyr::summarize(x, n = dplyr::n())
     if (m == FALSE) {
       x <- stats::na.omit(x)
     }
