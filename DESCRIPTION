@@ -30,6 +30,7 @@ Imports:
     tidyselect,
     utils
 Suggests: 
+    cli,
     covr,
     pkgdown,
     testthat
