@@ -135,7 +135,7 @@ ftab <- function(x, ..., m = TRUE) {
     varnames <- tidyselect::vars_select(names(x), !!!vars)
     x <- dplyr::select(x, !!!varnames)
     x <- dplyr::group_by_at(x, names(varnames))
-    x <- dplyr::summarize(x, Freq. = n())
+    x <- dplyr::summarize(x, Freq. = dplyr::n())
     x <- dplyr::ungroup(x)
   }
   x <- dplyr::mutate(x, Percent = formatC(.data[["Freq."]] / sum(.data[["Freq."]]) * 100, digits = 1L, format = "f"), Cum. = formatC(cumsum(.data[["Percent"]]), digits = 1L, format = "f"))
