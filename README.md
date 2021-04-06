@@ -5,15 +5,16 @@
 
 Create tables of frequencies
 
-[![Travis build
-status](https://travis-ci.org/gvelasq/tidytab.svg?branch=master)](https://travis-ci.org/gvelasq/tidytab)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/gvelasq/tidytab?branch=master&svg=true)](https://ci.appveyor.com/project/gvelasq/tidytab)
-[![Coverage
-status](https://codecov.io/gh/gvelasq/tidytab/branch/master/graph/badge.svg)](https://codecov.io/github/gvelasq/tidytab?branch=master)
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/gvelasq/tidytab/workflows/R-CMD-check/badge.svg)](https://github.com/gvelasq/tidytab/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/gvelasq/tidytab/branch/master/graph/badge.svg)](https://codecov.io/gh/gvelasq/tidytab?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/tidytab)](https://cran.r-project.org/package=tidytab)
-[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+<!-- badges: end -->
 
 ## Installation
 
@@ -186,7 +187,7 @@ mtcars %>% ta(gear)
 #>       Total │         32       100.0           
 ```
 
------
+------------------------------------------------------------------------
 
 Please note that this project is released with a [Contributor Code of
 Conduct](.github/CODE_OF_CONDUCT.md). By participating in this project
