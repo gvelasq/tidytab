@@ -18,7 +18,7 @@ test_that("data frame must have at least three columns for 'twoway' flavor", {
 })
 
 test_that("oneway flavor works", {
-  skip_on_appveyor()
+  skip_on_os("windows")
   a <-
     mtcars %>%
     count(gear) %>%
@@ -36,7 +36,7 @@ test_that("oneway flavor works", {
 })
 
 test_that("oneway flavor with no padding works", {
-  skip_on_appveyor()
+  skip_on_os("windows")
   b <-
     mtcars %>%
     count(gear) %>%
@@ -54,7 +54,7 @@ test_that("oneway flavor with no padding works", {
 })
 
 test_that("twowway flavor works for 3-way table", {
-  skip_on_appveyor()
+  skip_on_os("windows")
   c <-
     mtcars %>%
     count(gear, carb, am) %>%
@@ -81,7 +81,7 @@ test_that("twowway flavor works for 3-way table", {
 })
 
 test_that("twoway flavor works with dashed group separators", {
-  skip_on_appveyor()
+  skip_on_os("windows")
   d <-
     mtcars %>%
     count(gear, carb, am) %>%
@@ -108,7 +108,7 @@ test_that("twoway flavor works with dashed group separators", {
 })
 
 test_that("summary flavor with summary padding works", {
-  skip_on_appveyor()
+  skip_on_os("windows")
   e <-
     mtcars %>%
     group_by(gear) %>%
@@ -128,7 +128,7 @@ test_that("summary flavor with summary padding works", {
 })
 
 test_that("wrap_tbl() works", {
-  skip_on_appveyor()
+  skip_on_os("windows")
   f <- mtcars %>%
     mutate(
       cyl2 = cyl,
