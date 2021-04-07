@@ -56,3 +56,13 @@ color_grey <- function(x) {
 color_red <- function(x) {
   crayon::red(x)
 }
+
+if (l10n_info()[["UTF-8"]]) {
+  u2500 <- "\u2500"
+  u2502 <- "\u2502"
+  u253c <- "\u253c"
+} else {
+  u2500 <- "-"
+  u2502 <- "|"
+  u253c <- "+"
+}
