@@ -37,7 +37,7 @@
 #' @seealso
 #' The statar package by Matthieu Gomez provides a `tab()` function with output similar to tidytab's `ftab()`. Both packages use a variant of [`statascii()`](https://github.com/gvelasq/statascii) to format tables for display in the `R` console. Differences between the packages include:
 #'
-#' * tidytab supports select helpers from [dplyr](https://dplyr.tidyverse.org/reference/select.html) and [tidyselect](https://rdrr.io/cran/tidyselect/man/select_helpers.html).
+#' * tidytab supports select helpers from [dplyr](https://dplyr.tidyverse.org/reference/select.html) and [tidyselect](https://tidyselect.r-lib.org/reference/language.html).
 #' * tidytab displays tables in colors: dark grey for block drawing characters and red for `NA`s.
 #' * tidytab allows for tabulation of named and unnamed vectors.
 #' * tidytab implements automatic table wrapping for tables wider than the `R` console.

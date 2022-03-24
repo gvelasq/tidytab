@@ -74,9 +74,9 @@ mtcars \%>\% ta(gear)
 
 }
 \seealso{
-The statar package by Matthieu Gomez provides a \code{tab()} function with output similar to tidytab's \code{ftab()}. Both packages use a variant of \href{https://github.com/gvelasq/statascii}{statascii()} to format tables for display in the \code{R} console. Differences between the packages include:
+The statar package by Matthieu Gomez provides a \code{tab()} function with output similar to tidytab's \code{ftab()}. Both packages use a variant of \href{https://github.com/gvelasq/statascii}{\code{statascii()}} to format tables for display in the \code{R} console. Differences between the packages include:
 \itemize{
-\item tidytab supports select helpers from \href{https://dplyr.tidyverse.org/reference/select.html}{dplyr} and \href{https://rdrr.io/cran/tidyselect/man/select_helpers.html}{tidyselect}.
+\item tidytab supports select helpers from \href{https://dplyr.tidyverse.org/reference/select.html}{dplyr} and \href{https://tidyselect.r-lib.org/reference/language.html}{tidyselect}.
 \item tidytab displays tables in colors: dark grey for block drawing characters and red for \code{NA}s.
 \item tidytab allows for tabulation of named and unnamed vectors.
 \item tidytab implements automatic table wrapping for tables wider than the \code{R} console.
