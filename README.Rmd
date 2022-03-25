@@ -12,9 +12,10 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
+
 # tidytab
 
-Create tables of frequencies
+> Create tidyverse-friendly tables of frequencies
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/gvelasq/tidytab/workflows/R-CMD-check/badge.svg)](https://github.com/gvelasq/tidytab/actions)

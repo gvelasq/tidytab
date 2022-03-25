@@ -3,7 +3,7 @@
 
 # tidytab
 
-Create tables of frequencies
+> Create tidyverse-friendly tables of frequencies
 
 <!-- badges: start -->
 
