@@ -12,3 +12,4 @@
 ^ISSUE_TEMPLATE\.md$
 ^appveyor\.yml$
 ^\.github$
+^pkgdown$

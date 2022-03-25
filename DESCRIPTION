@@ -7,7 +7,8 @@ Author: Gustavo Velásquez <gvelasq2github@gmail.com>
 Maintainer: Gustavo Velásquez <gvelasq2github@gmail.com>
 Description: Functions to create tables of frequencies.
 License: MIT + file LICENSE
-URL: https://github.com/gvelasq/tidytab
+URL: https://github.com/gvelasq/tidytab,
+    https://gvelasq.github.io/tidytab/
 BugReports: https://github.com/gvelasq/tidytab/issues
 Depends: 
     R (>= 3.2)
