@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/gvelasq/tidytab/workflows/R-CMD-check/badge.svg)](https://github.com/gvelasq/tidytab/actions)
-[![Codecov test coverage](https://codecov.io/gh/gvelasq/tidytab/branch/master/graph/badge.svg)](https://codecov.io/gh/gvelasq/tidytab?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/gvelasq/tidytab/branch/main/graph/badge.svg)](https://codecov.io/gh/gvelasq/tidytab?branch=main)
 [![CRAN status](https://www.r-pkg.org/badges/version/tidytab)](https://cran.r-project.org/package=tidytab)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
