@@ -92,8 +92,7 @@ tab <- function(x, ..., m = TRUE) {
   }
   if (length(vars) == 0L) {
     df_to_return <- ftab(x, ..., m = m)
-  }
-  else {
+  } else {
     vars <- lapply(vars, rlang::env_bury, !!!helpers)
     varnames <- tidyselect::vars_select(names(x), !!!vars)
     if (length(varnames) == 1L | length(varnames) > 2L) {
@@ -129,8 +128,7 @@ ftab <- function(x, ..., m = TRUE) {
       x <- dplyr::count(x, .data[["value"]])
       x <- dplyr::rename(x, !!x_name := .data[["value"]], Freq. = .data[["n"]])
     }
-  }
-  else {
+  } else {
     vars <- lapply(vars, rlang::env_bury, !!!helpers)
     varnames <- tidyselect::vars_select(names(x), !!!vars)
     x <- dplyr::select(x, !!!varnames)
@@ -147,8 +145,7 @@ ftab <- function(x, ..., m = TRUE) {
     x[nrow(x) - 1L, ncol(x)] <- "100.0"
     x <- tibble::as_tibble(x)
     statascii(x, flavor = "oneway")
-  }
-  else if (ncol(x) > 4) {
+  } else if (ncol(x) > 4) {
     x <- tibble::as_tibble(x)
     statascii(x, flavor = "summary", separators = TRUE)
   }

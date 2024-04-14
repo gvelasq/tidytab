@@ -14,6 +14,10 @@ br <- function(x, title) {
   if (title_expr == "") {
     title_expr <- rlang::quo_name(rlang::enexpr(x))
   }
-  if (!interactive()) return(invisible(x)) else get("View", envir = as.environment("package:utils"))(x, title = title_expr)
+  if (!interactive()) {
+    return(invisible(x))
+  } else {
+    get("View", envir = as.environment("package:utils"))(x, title = title_expr)
+  }
   invisible(x)
 }

@@ -2,7 +2,6 @@
 #'
 #' @name %gin%
 #' @rdname gin
-#' @rdname \%gin\%
 #'
 #' @description
 #' \code{\%gin\%} is a reimagination of \code{\%in\%} using `grepl()` for partial string matching.
