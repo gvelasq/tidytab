@@ -136,10 +136,15 @@ ftab <- function(x, ..., m = TRUE) {
     x <- dplyr::summarize(x, Freq. = dplyr::n())
     x <- dplyr::ungroup(x)
   }
-  x <- dplyr::mutate(x, Percent = formatC(.data[["Freq."]] / sum(.data[["Freq."]]) * 100, digits = 1L, format = "f"), Cum. = formatC(cumsum(.data[["Percent"]]), digits = 1L, format = "f"))
+  x <- dplyr::mutate(x, Percent =(.data[["Freq."]] / sum(.data[["Freq."]]) * 100), Cum. = (cumsum(.data[["Freq."]]/sum(.data[["Freq."]]))*100))
+  x <- dplyr::mutate(x, Percent = formatC(.data[["Percent"]], digits = 1L, format = "f"))
+  x <- dplyr::mutate(x, Cum. = formatC(.data[["Cum."]], digits = 1L, format = "f"))
   df_to_return <- x
   if (ncol(x) == 4 & colnames(x)[2] == "Freq.") {
     total_freq <- formatC(sum(x[, 2]), digits = 0L, format = "f")
+
+
+
     x <- sapply(x, as.character)
     x <- rbind(x, c("Total", total_freq, "100.0", "\u00a0"))
     x[nrow(x) - 1L, ncol(x)] <- "100.0"
