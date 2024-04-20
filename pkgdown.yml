@@ -1,8 +1,8 @@
 pandoc: 3.1.11
-pkgdown: 2.0.8
+pkgdown: 2.0.9
 pkgdown_sha: ~
 articles: {}
-last_built: 2024-04-14T23:45Z
+last_built: 2024-04-20T22:39Z
 urls:
   reference: https://gvelasq.github.io/tidytab/reference
   article: https://gvelasq.github.io/tidytab/articles
