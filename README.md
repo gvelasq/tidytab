@@ -16,7 +16,6 @@ status](https://www.r-pkg.org/badges/version/tidytab)](https://cran.r-project.or
 status](https://gvelasq.r-universe.dev/badges/tidytab)](https://gvelasq.r-universe.dev/tidytab)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-
 <!-- badges: end -->
 
 ## Installation
@@ -31,7 +30,6 @@ devtools::install_github("gvelasq/tidytab")
 ## Usage
 
 ``` r
-
 library(tidytab)
 
 # one-way table of frequencies
