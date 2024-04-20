@@ -1,6 +1,6 @@
 # tidytab (development version)
 
-* Replace magrittr pipe with base R pipe (#18), @askawron.
+* Replaced magrittr pipe with base R pipe (#18, @askawron).
 * Updated usethis helpers to usethis 2.2.3 (#17).
 * Added an R-universe badge to README (#14).
 
