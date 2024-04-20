@@ -10,11 +10,11 @@ context("test-statascii.R")
 tables <- read_rds("sample-tables.rds")
 
 test_that("data frame must have at least two columns", {
-  expect_error(statascii(as.data.frame(letters[1:3])))
+  expect_error(tidytab:::statascii(as.data.frame(letters[1:3])))
 })
 
 test_that("data frame must have at least three columns for 'twoway' flavor", {
-  expect_error(statascii(as.data.frame(letters[1:3]), flavor = "twoway"))
+  expect_error(tidytab:::statascii(as.data.frame(letters[1:3]), flavor = "twoway"))
 })
 
 test_that("oneway flavor works", {
@@ -30,7 +30,7 @@ test_that("oneway flavor works", {
   expect_equal(
     tables[[1]],
     ansi_strip(
-      capture.output(statascii(a, flavor = "oneway"))
+      capture.output(tidytab:::statascii(a, flavor = "oneway"))
     )
   )
 })
@@ -48,7 +48,7 @@ test_that("oneway flavor with no padding works", {
   expect_equal(
     tables[[2]],
     ansi_strip(
-      capture.output(statascii(b, flavor = "oneway", padding = "none"))
+      capture.output(tidytab:::statascii(b, flavor = "oneway", padding = "none"))
     )
   )
 })
@@ -75,7 +75,7 @@ test_that("twowway flavor works for 3-way table", {
   expect_equal(
     tables[[3]],
     ansi_strip(
-      capture.output(statascii(c, flavor = "twoway"))
+      capture.output(tidytab:::statascii(c, flavor = "twoway"))
     )
   )
 })
@@ -102,7 +102,7 @@ test_that("twoway flavor works with dashed group separators", {
   expect_equal(
     tables[[4]],
     ansi_strip(
-      capture.output(statascii(d, flavor = "twoway", separators = TRUE))
+      capture.output(tidytab:::statascii(d, flavor = "twoway", separators = TRUE))
     )
   )
 })
@@ -122,7 +122,7 @@ test_that("summary flavor with summary padding works", {
   expect_equal(
     tables[[5]],
     ansi_strip(
-      capture.output(statascii(e, flavor = "summary", padding = "summary"))
+      capture.output(tidytab:::statascii(e, flavor = "summary", padding = "summary"))
     )
   )
 })
@@ -157,8 +157,7 @@ test_that("wrap_tbl() works", {
   expect_equal(
     tables[[6]],
     ansi_strip(
-      capture.output(statascii(f, flavor = "oneway", separators = TRUE))
+      capture.output(tidytab:::statascii(f, flavor = "oneway", separators = TRUE))
     )
   )
 })
-
