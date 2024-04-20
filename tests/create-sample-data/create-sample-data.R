@@ -12,40 +12,40 @@ library(utils)
 
 # 1. demonstrate 'oneway' flavor for one-way tables of frequencies ----
 a <-
-  mtcars %>%
-  count(gear) %>%
-  rename(Freq. = n) %>%
+  mtcars |>
+  count(gear) |>
+  rename(Freq. = n) |>
   mutate(gear = as.character(gear))
 a <-
-  a %>%
+  a |>
   add_row(gear = "Total", Freq. = sum(a[, 2]))
 table_a <-
   capture.output(tidytab:::statascii(a, flavor = "oneway"))
 
 # 2. demonstrate 'oneway' flavor with no padding ----
 b <-
-  mtcars %>%
-  count(gear) %>%
-  rename(Freq. = n) %>%
+  mtcars |>
+  count(gear) |>
+  rename(Freq. = n) |>
   mutate(gear = as.character(gear))
 b <-
-  b %>%
+  b |>
   add_row(gear = "Total", Freq. = sum(b[, 2]))
 table_b <-
   capture.output(tidytab:::statascii(b, flavor = "oneway", padding = "none"))
 
 # 3. demonstrate 'twoway' flavor for n-way tables of frequencies ----
 c <-
-  mtcars %>%
-  count(gear, carb, am) %>%
-  rename(Freq. = n) %>%
+  mtcars |>
+  count(gear, carb, am) |>
+  rename(Freq. = n) |>
   mutate(
     gear = as.character(gear),
     carb = as.character(carb),
     am = as.character(am)
   )
 c <-
-  c %>%
+  c |>
   add_row(
     gear = "Total",
     carb = "",
@@ -57,16 +57,16 @@ table_c <-
 
 # 4. demonstrate 'twoway' flavor with dashed group separator ----
 d <-
-  mtcars %>%
-  count(gear, carb, am) %>%
-  rename(Freq. = n) %>%
+  mtcars |>
+  count(gear, carb, am) |>
+  rename(Freq. = n) |>
   mutate(
     gear = as.character(gear),
     carb = as.character(carb),
     am = as.character(am)
   )
 d <-
-  d %>%
+  d |>
   add_row(
     gear = "Total",
     carb = "",
@@ -78,8 +78,8 @@ table_d <-
 
 # 5. demonstrate 'summary' flavor for summary statistics ----
 e <-
-  mtcars %>%
-  group_by(gear) %>%
+  mtcars |>
+  group_by(gear) |>
   summarize(
     Obs = n(),
     Mean = mean(gear),
@@ -92,14 +92,14 @@ table_e <-
 
 # 6. demonstrate wrapping feature for wide tables ----
 f <-
-  mtcars %>%
+  mtcars |>
   mutate(
     cyl2 = cyl,
     vs2 = vs,
     am2 = am,
     carb2 = carb
-  ) %>%
-  filter(gear != 5) %>%
+  ) |>
+  filter(gear != 5) |>
   count(
     gear,
     carb,
@@ -110,12 +110,12 @@ f <-
     am2,
     vs2,
     cyl2
-  ) %>%
-  rename(Freq. = n) %>%
-  mutate(gear = as.character(gear)) %>%
+  ) |>
+  rename(Freq. = n) |>
+  mutate(gear = as.character(gear)) |>
   ungroup()
 f <-
-  f %>%
+  f |>
   add_row(gear = "Total", Freq. = sum(f[, 10]))
 f[is.na(f)] <- ""
 options("width" = 80)

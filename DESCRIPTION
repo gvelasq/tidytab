@@ -17,7 +17,6 @@ Imports:
     dplyr,
     grDevices,
     here,
-    magrittr,
     purrr,
     readr,
     rlang (>= 0.2.0),

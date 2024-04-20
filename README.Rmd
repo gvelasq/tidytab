@@ -37,35 +37,34 @@ devtools::install_github("gvelasq/tidytab")
 ## Usage
 
 ```{r example, message = FALSE}
-# setup (tidytab automatically exports the magrittr pipe)
 library(tidytab)
 
 # one-way table of frequencies
-mtcars %>% tab(cyl)
+mtcars |> tab(cyl)
 
 # two-way table of frequencies (a special 2x2 contingency table)
-mtcars %>% tab(cyl, gear)
+mtcars |> tab(cyl, gear)
 
 # flat contingency tables of three (or more) variables
-mtcars %>% tab(cyl, gear, am)
+mtcars |> tab(cyl, gear, am)
 
 # tables wider than the R console are automatically wrapped
-mtcars %>% tab(cyl, gear, am, vs)
+mtcars |> tab(cyl, gear, am, vs)
 
 # missing values are displayed in red
 tab(letters[24:27])
 
 # ftab() displays only flat contingency tables (here, with two variables)
-mtcars %>% ftab(cyl, gear)
+mtcars |> ftab(cyl, gear)
 
 # tab1() displays one-way tables for each variable
-mtcars %>% tab1(cyl, gear)
+mtcars |> tab1(cyl, gear)
 
 # tab2() displays two-way tables for all variable combinations
-mtcars %>% tab2(cyl, gear, am)
+mtcars |> tab2(cyl, gear, am)
 
 # ta() is a shortened alias for tab(), inspired by Stata
-mtcars %>% ta(gear)
+mtcars |> ta(gear)
 ```
 
 ## Code of Conduct
