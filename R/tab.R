@@ -185,7 +185,7 @@ tab2 <- function(x, ..., m = TRUE) {
   filter <- function(x, y) {
     x <= y
   }
-  tab_sequence <- purrr::cross2(seq_along(varnames), seq_along(varnames), .filter = filter)
+  tab_sequence <- tidyr::expand_grid(seq_along(varnames), seq_along(varnames), .filter = filter)
   for (i in seq_along(tab_sequence)) {
     tab(x = x, !!varnames[[purrr::as_vector(tab_sequence[[i]])[2]]], !!varnames[[purrr::as_vector(tab_sequence[[i]])[1]]], m = m)
     cat("\n")
