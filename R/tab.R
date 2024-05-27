@@ -8,19 +8,20 @@
 #' The convenience functions `tab1()` and `tab2()` are inspired by functions of the same name in Stata. They allow rapid tabulation of a set of variables. `tab1()` creates one-way tables of frequencies for each listed variable. `tab2()` creates two-way tables of frequencies for all listed variable combinations.
 #'
 #' @usage
-#' tab(x, ..., m = TRUE)
+#' tab(x, ..., m = TRUE, sort = FALSE)
 #'
-#' ta(x, ..., m = TRUE)
+#' ta(x, ..., m = TRUE, sort = FALSE)
 #'
-#' ftab(x, ..., m = TRUE)
+#' ftab(x, ..., m = TRUE, sort = FALSE)
 #'
-#' tab1(x, ..., m = TRUE)
+#' tab1(x, ..., m = TRUE, sort = FALSE)
 #'
 #' tab2(x, ..., m = TRUE)
 #'
 #' @param x A vector, data.frame, or tibble.
 #' @param ... A comma separated list of unquoted variable names or positions. Select helpers from [dplyr](https://dplyr.tidyverse.org/reference/select.html) and [tidyselect](https://rdrr.io/cran/tidyselect/man/select_helpers.html) are supported.
 #' @param m If `TRUE` (the default), missing values are reported.
+#' @param sort If `FALSE` (the default), the table is sorted in ascending order by value. If `TRUE`, the table is sorted in descending order of frequency. Sorting is not implemented for two-way tables.
 #'
 #' @details
 #' If a single variable is passed to `tab()`, a table of frequencies is printed (with a total row and columns 'Freq.', 'Percent', and 'Cum.').
@@ -85,20 +86,23 @@
 
 #' @rdname tab
 #' @export
-tab <- function(x, ..., m = TRUE) {
+tab <- function(x, ..., m = TRUE, sort = FALSE) {
   vars <- rlang::quos(...)
   if (!exists("x_name", envir = x_env)) {
     set_x_name(rlang::quo_name(rlang::enexpr(x)))
   }
   if (length(vars) == 0L) {
-    df_to_return <- ftab(x, ..., m = m)
+    df_to_return <- ftab(x, ..., m = m, sort = sort)
   } else {
     vars <- lapply(vars, rlang::env_bury, !!!helpers)
     varnames <- tidyselect::vars_select(names(x), !!!vars)
     if (length(varnames) == 1L | length(varnames) > 2L) {
-      df_to_return <- ftab(x, !!!vars, m = m)
+      df_to_return <- ftab(x, !!!vars, m = m, sort = sort)
     }
     if (length(varnames) == 2L) {
+      if (sort) {
+        warning("Sorting is not implemented for two-way tables.")
+      }
       df_to_return <- ctab(x, !!!vars, m = m)
     }
   }
@@ -106,13 +110,13 @@ tab <- function(x, ..., m = TRUE) {
 }
 
 #' @export
-ta <- function(x, ..., m = TRUE) {
+ta <- function(x, ..., m = TRUE, sort = FALSE) {
   set_x_name(rlang::quo_name(rlang::enexpr(x)))
-  tab(x, ..., m = m)
+  tab(x, ..., m = m, sort = sort)
 }
 
 #' @export
-ftab <- function(x, ..., m = TRUE) {
+ftab <- function(x, ..., m = TRUE, sort = FALSE) {
   if (!exists("x_name", envir = x_env)) {
     set_x_name(rlang::quo_name(rlang::enexpr(x)))
   }
@@ -125,7 +129,7 @@ ftab <- function(x, ..., m = TRUE) {
   if (length(vars) == 0L) {
     if (rlang::is_atomic(x) == TRUE) {
       x <- tibble::enframe(x, name = NULL)
-      x <- dplyr::count(x, .data[["value"]])
+      x <- dplyr::count(x, .data[["value"]], sort = sort)
       x <- dplyr::rename(x, !!x_name := .data[["value"]], Freq. = .data[["n"]])
     }
   } else {
@@ -135,6 +139,9 @@ ftab <- function(x, ..., m = TRUE) {
     x <- dplyr::group_by_at(x, names(varnames))
     x <- dplyr::summarize(x, Freq. = dplyr::n())
     x <- dplyr::ungroup(x)
+    if (sort) {
+      x <- dplyr::arrange(x,desc(Freq.))
+    }
   }
   x <- dplyr::mutate(x, Percent = formatC(.data[["Freq."]] / sum(.data[["Freq."]]) * 100, digits = 1L, format = "f"), Cum. = formatC(cumsum(.data[["Percent"]]), digits = 1L, format = "f"))
   df_to_return <- x
@@ -153,19 +160,19 @@ ftab <- function(x, ..., m = TRUE) {
 }
 
 #' @export
-tab1 <- function(x, ..., m = TRUE) {
+tab1 <- function(x, ..., m = TRUE, sort = FALSE) {
   vars <- rlang::quos(...)
   if (!exists("x_name", envir = x_env)) {
     set_x_name(rlang::quo_name(rlang::enexpr(x)))
   }
   if (length(vars) == 0L) {
-    ftab(x, ..., m = m)
+    ftab(x, ..., m = m, sort = sort)
   } else {
     vars <- lapply(vars, rlang::env_bury, !!!helpers)
     varnames <- tidyselect::vars_select(names(x), !!!vars)
     for (i in seq_along(varnames)) {
       tmp <- dplyr::select(x, !!!varnames[[i]])
-      tab(tmp, !!varnames[[i]], m = m)
+      tab(tmp, !!varnames[[i]], m = m, sort = sort)
       if (i < length(varnames)) {
         cat("\n")
       }
@@ -174,7 +181,10 @@ tab1 <- function(x, ..., m = TRUE) {
 }
 
 #' @export
-tab2 <- function(x, ..., m = TRUE) {
+tab2 <- function(x, ..., m = TRUE, sort = FALSE) {
+  if (sort) {
+    warning("Sorting is not implemented for two-way tables.")
+  }
   vars <- rlang::quos(...)
   vars <- lapply(vars, rlang::env_bury, !!!helpers)
   varnames <- tidyselect::vars_select(names(x), !!!vars)

@@ -27,6 +27,10 @@ test_that("tab(), ftab(), ctab(), and ta() invisibly return tibbles", {
   expect_true(is_tibble(tab(a, vs, m = FALSE)))
   expect_true(is_tibble(tab(a, vs, am, m = FALSE)))
 
+  expect_true(is_tibble(tab(a$carb, sort = TRUE)))
+  expect_true(is_tibble(tab(a, carb, sort = TRUE)))
+  expect_true(is_tibble(tab(a, carb, vs, sort = TRUE)))
+
   expect_true(is_tibble(ftab(mtcars$vs)))
   expect_true(is_tibble(ftab(mtcars, vs)))
   expect_true(is_tibble(ftab(mtcars, vs, am)))
@@ -34,6 +38,10 @@ test_that("tab(), ftab(), ctab(), and ta() invisibly return tibbles", {
   expect_true(is_tibble(ftab(a$vs, m = FALSE)))
   expect_true(is_tibble(ftab(a, vs, m = FALSE)))
   expect_true(is_tibble(ftab(a, vs, am, m = FALSE)))
+
+  expect_true(is_tibble(ftab(a$carb, sort = TRUE)))
+  expect_true(is_tibble(ftab(a, carb, sort = TRUE)))
+  expect_true(is_tibble(ftab(a, carb, vs, sort = TRUE)))
 
   expect_true(is_tibble(ctab(mtcars, vs, am)))
 
@@ -46,6 +54,10 @@ test_that("tab(), ftab(), ctab(), and ta() invisibly return tibbles", {
   expect_true(is_tibble(ta(a$vs, m = FALSE)))
   expect_true(is_tibble(ta(a, vs, m = FALSE)))
   expect_true(is_tibble(ta(a, vs, am, m = FALSE)))
+
+  expect_true(is_tibble(ta(a$carb, sort = TRUE)))
+  expect_true(is_tibble(ta(a, carb, sort = TRUE)))
+  expect_true(is_tibble(ta(a, carb, vs, sort = TRUE)))
 })
 
 test_that("tab1() and tab2() work", {
@@ -65,4 +77,10 @@ test_that("tab1() and tab2() work", {
   expect_true(is_null(tab1(a, vs, am, m = FALSE)))
   expect_true(is_null(tab2(a, vs, am, m = FALSE)))
   expect_true(is_null(tab2(a, vs, am, gear, m = FALSE)))
+
+  expect_true(is_tibble(tab1(a$carb, sort = TRUE)))
+  expect_true(is_null(tab1(a, carb, sort = TRUE)))
+  expect_true(is_null(tab1(a, carb, vs, sort = TRUE)))
+  expect_true(is_null(tab2(a, carb, vs, sort = TRUE)))
+  expect_true(is_null(tab2(a, carb, vs, am, sort = TRUE)))
 })
