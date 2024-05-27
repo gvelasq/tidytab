@@ -21,8 +21,8 @@
 #' @param x A vector, data.frame, or tibble.
 #' @param ... A comma separated list of unquoted variable names or positions. Select helpers from [dplyr](https://dplyr.tidyverse.org/reference/select.html) and [tidyselect](https://rdrr.io/cran/tidyselect/man/select_helpers.html) are supported.
 #' @param m If `TRUE` (the default), missing values are reported.
-#' @param sort If `TRUE` (default is `FALSE`), will show the largest groups at the top. Sorting is not implemented for two-way tables.
-#'
+#' @param sort If `FALSE` (the default), the table is sorted in ascending order by value. If `TRUE`, the table is sorted in descending order of frequency. Sorting is not implemented for two-way tables.
+
 #' @details
 #' If a single variable is passed to `tab()`, a table of frequencies is printed (with a total row and columns 'Freq.', 'Percent', and 'Cum.').
 #'
