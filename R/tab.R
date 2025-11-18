@@ -141,9 +141,6 @@ ftab <- function(x, ..., m = TRUE) {
   df_to_return <- x
   if (ncol(x) == 4 & colnames(x)[2] == "Freq.") {
     total_freq <- formatC(sum(x[, 2]), digits = 0L, format = "f")
-
-
-
     x <- sapply(x, as.character)
     x <- rbind(x, c("Total", total_freq, "100.0", "\u00a0"))
     x[nrow(x) - 1L, ncol(x)] <- "100.0"
