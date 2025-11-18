@@ -30,11 +30,10 @@ devtools::install_github("gvelasq/tidytab")
 ## Usage
 
 ``` r
-# setup (tidytab automatically exports the magrittr pipe)
 library(tidytab)
 
 # one-way table of frequencies
-mtcars %>% tab(cyl)
+mtcars |> tab(cyl)
 #>         cyl │      Freq.     Percent        Cum. 
 #> ────────────┼───────────────────────────────────
 #>           4 │         11        34.4        34.4 
@@ -44,7 +43,7 @@ mtcars %>% tab(cyl)
 #>       Total │         32       100.0           
 
 # two-way table of frequencies (a special 2x2 contingency table)
-mtcars %>% tab(cyl, gear)
+mtcars |> tab(cyl, gear)
 #>            │      gear                       │           
 #>        cyl │         3          4          5 │     Total 
 #> ───────────┼─────────────────────────────────┼──────────
@@ -55,7 +54,7 @@ mtcars %>% tab(cyl, gear)
 #>      Total │        15         12          5 │        32
 
 # flat contingency tables of three (or more) variables
-mtcars %>% tab(cyl, gear, am)
+mtcars |> tab(cyl, gear, am)
 #>         cyl │       gear          am       Freq.     Percent        Cum. 
 #> ────────────┼───────────────────────────────────────────────────────────
 #>           4 │          3           0           1         3.1         3.1 
@@ -72,7 +71,7 @@ mtcars %>% tab(cyl, gear, am)
 #>           8 │          5           1           2         6.2       100.0
 
 # tables wider than the R console are automatically wrapped
-mtcars %>% tab(cyl, gear, am, vs)
+mtcars |> tab(cyl, gear, am, vs)
 #>         cyl │       gear          am          vs       Freq.     Percent
 #> ────────────┼───────────────────────────────────────────────────────────
 #>           4 │          3           0           1           1         3.1
@@ -117,7 +116,7 @@ tab(letters[24:27])
 #>            Total │          4       100.0           
 
 # ftab() displays only flat contingency tables (here, with two variables)
-mtcars %>% ftab(cyl, gear)
+mtcars |> ftab(cyl, gear)
 #>         cyl │       gear       Freq.     Percent        Cum. 
 #> ────────────┼───────────────────────────────────────────────
 #>           4 │          3           1         3.1         3.1 
@@ -132,7 +131,7 @@ mtcars %>% ftab(cyl, gear)
 #>           8 │          5           2         6.2       100.0
 
 # tab1() displays one-way tables for each variable
-mtcars %>% tab1(cyl, gear)
+mtcars |> tab1(cyl, gear)
 #>         cyl │      Freq.     Percent        Cum. 
 #> ────────────┼───────────────────────────────────
 #>           4 │         11        34.4        34.4 
@@ -150,7 +149,7 @@ mtcars %>% tab1(cyl, gear)
 #>       Total │         32       100.0           
 
 # tab2() displays two-way tables for all variable combinations
-mtcars %>% tab2(cyl, gear, am)
+mtcars |> tab2(cyl, gear, am)
 #>            │      gear                       │           
 #>        cyl │         3          4          5 │     Total 
 #> ───────────┼─────────────────────────────────┼──────────
@@ -179,7 +178,7 @@ mtcars %>% tab2(cyl, gear, am)
 #>      Total │        19         13 │        32
 
 # ta() is a shortened alias for tab(), inspired by Stata
-mtcars %>% ta(gear)
+mtcars |> ta(gear)
 #>        gear │      Freq.     Percent        Cum. 
 #> ────────────┼───────────────────────────────────
 #>           3 │         15        46.9        46.9 

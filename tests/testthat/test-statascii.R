@@ -10,22 +10,22 @@ context("test-statascii.R")
 tables <- read_rds("sample-tables.rds")
 
 test_that("data frame must have at least two columns", {
-  expect_error(statascii(as.data.frame(letters[1:3])))
+  expect_error(tidytab:::statascii(as.data.frame(letters[1:3])))
 })
 
 test_that("data frame must have at least three columns for 'twoway' flavor", {
-  expect_error(statascii(as.data.frame(letters[1:3]), flavor = "twoway"))
+  expect_error(tidytab:::statascii(as.data.frame(letters[1:3]), flavor = "twoway"))
 })
 
 test_that("oneway flavor works", {
   skip_on_os("windows")
   a <-
-    mtcars %>%
-    count(gear) %>%
-    rename(Freq. = n) %>%
+    mtcars |>
+    count(gear) |>
+    rename(Freq. = n) |>
     mutate(gear = as.character(gear))
   a <-
-    a %>%
+    a |>
     add_row(gear = "Total", Freq. = sum(a[, 2]))
   expect_equal(
     tables[[1]],
@@ -38,17 +38,17 @@ test_that("oneway flavor works", {
 test_that("oneway flavor with no padding works", {
   skip_on_os("windows")
   b <-
-    mtcars %>%
-    count(gear) %>%
-    rename(Freq. = n) %>%
+    mtcars |>
+    count(gear) |>
+    rename(Freq. = n) |>
     mutate(gear = as.character(gear))
   b <-
-    b %>%
+    b |>
     add_row(gear = "Total", Freq. = sum(b[, 2]))
   expect_equal(
     tables[[2]],
     ansi_strip(
-      capture.output(statascii(b, flavor = "oneway", padding = "none"))
+      capture.output(tidytab:::statascii(b, flavor = "oneway", padding = "none"))
     )
   )
 })
@@ -56,16 +56,16 @@ test_that("oneway flavor with no padding works", {
 test_that("twowway flavor works for 3-way table", {
   skip_on_os("windows")
   c <-
-    mtcars %>%
-    count(gear, carb, am) %>%
-    rename(Freq. = n) %>%
+    mtcars |>
+    count(gear, carb, am) |>
+    rename(Freq. = n) |>
     mutate(
       gear = as.character(gear),
       carb = as.character(carb),
       am = as.character(am)
     )
   c <-
-    c %>%
+    c |>
     add_row(
       gear = "Total",
       carb = "",
@@ -75,7 +75,7 @@ test_that("twowway flavor works for 3-way table", {
   expect_equal(
     tables[[3]],
     ansi_strip(
-      capture.output(statascii(c, flavor = "twoway"))
+      capture.output(tidytab:::statascii(c, flavor = "twoway"))
     )
   )
 })
@@ -83,16 +83,16 @@ test_that("twowway flavor works for 3-way table", {
 test_that("twoway flavor works with dashed group separators", {
   skip_on_os("windows")
   d <-
-    mtcars %>%
-    count(gear, carb, am) %>%
-    rename(Freq. = n) %>%
+    mtcars |>
+    count(gear, carb, am) |>
+    rename(Freq. = n) |>
     mutate(
       gear = as.character(gear),
       carb = as.character(carb),
       am = as.character(am)
     )
   d <-
-    d %>%
+    d |>
     add_row(
       gear = "Total",
       carb = "",
@@ -102,7 +102,7 @@ test_that("twoway flavor works with dashed group separators", {
   expect_equal(
     tables[[4]],
     ansi_strip(
-      capture.output(statascii(d, flavor = "twoway", separators = TRUE))
+      capture.output(tidytab:::statascii(d, flavor = "twoway", separators = TRUE))
     )
   )
 })
@@ -110,8 +110,8 @@ test_that("twoway flavor works with dashed group separators", {
 test_that("summary flavor with summary padding works", {
   skip_on_os("windows")
   e <-
-    mtcars %>%
-    group_by(gear) %>%
+    mtcars |>
+    group_by(gear) |>
     summarize(
       Obs = n(),
       Mean = mean(gear),
@@ -122,21 +122,21 @@ test_that("summary flavor with summary padding works", {
   expect_equal(
     tables[[5]],
     ansi_strip(
-      capture.output(statascii(e, flavor = "summary", padding = "summary"))
+      capture.output(tidytab:::statascii(e, flavor = "summary", padding = "summary"))
     )
   )
 })
 
 test_that("wrap_tbl() works", {
   skip_on_os("windows")
-  f <- mtcars %>%
+  f <- mtcars |>
     mutate(
       cyl2 = cyl,
       vs2 = vs,
       am2 = am,
       carb2 = carb
-    ) %>%
-    filter(gear != 5) %>%
+    ) |>
+    filter(gear != 5) |>
     count(
       gear,
       carb,
@@ -147,17 +147,17 @@ test_that("wrap_tbl() works", {
       am2,
       vs2,
       cyl2
-    ) %>%
-    rename(Freq. = n) %>%
-    mutate(gear = as.character(gear)) %>%
+    ) |>
+    rename(Freq. = n) |>
+    mutate(gear = as.character(gear)) |>
     ungroup()
-  f <- f %>% add_row(gear = "Total", Freq. = sum(f[, 10]))
+  f <- f |> add_row(gear = "Total", Freq. = sum(f[, 10]))
   f[is.na(f)] <- ""
   options("width" = 80)
   expect_equal(
     tables[[6]],
     ansi_strip(
-      capture.output(statascii(f, flavor = "oneway", separators = TRUE))
+      capture.output(tidytab:::statascii(f, flavor = "oneway", separators = TRUE))
     )
   )
 })
