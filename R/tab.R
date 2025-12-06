@@ -125,7 +125,7 @@ ftab <- function(x, ..., m = TRUE) {
   if (length(vars) == 0L) {
     if (rlang::is_atomic(x) == TRUE) {
       x <- tibble::enframe(x, name = NULL)
-      x <- dplyr::count(x, tidyselect::all_of("value"))
+      x <- dplyr::count(x, .data[["value"]])
       x <- dplyr::rename(x, !!x_name := tidyselect::all_of("value"), Freq. = tidyselect::all_of("n"))
     }
   } else {
@@ -136,8 +136,8 @@ ftab <- function(x, ..., m = TRUE) {
     x <- dplyr::summarize(x, Freq. = dplyr::n())
     x <- dplyr::ungroup(x)
   }
-  x <- dplyr::mutate(x, Percent = tidyselect::all_of[["Freq."]] / sum(tidyselect::all_of[["Freq."]]) * 100, Cum. = cumsum(tidyselect::all_of[["Percent"]]))
-  x <- dplyr::mutate(x, Percent = formatC(tidyselect::all_of[["Percent"]], digits = 1L, format = "f"), Cum. = formatC(tidyselect::all_of[["Cum."]], digits = 1L, format = "f"))
+  x <- dplyr::mutate(x, Percent = .data[["Freq."]] / sum(.data[["Freq."]]) * 100, Cum. = cumsum(.data[["Percent"]]))
+  x <- dplyr::mutate(x, Percent = formatC(.data[["Percent"]], digits = 1L, format = "f"), Cum. = formatC(.data[["Cum."]], digits = 1L, format = "f"))
   df_to_return <- x
   if (ncol(x) == 4 & colnames(x)[2] == "Freq.") {
     total_freq <- formatC(sum(x[, 2]), digits = 0L, format = "f")
