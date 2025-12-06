@@ -2,6 +2,9 @@
 
 ## tidytab (development version)
 
+- Fixed deprecated use of .data in tidyselect expressions
+  ([@ramongss](https://github.com/ramongss),
+  [\#15](https://github.com/gvelasq/tidytab/issues/15)).
 - Fixed calculation of cumulative percentage
   ([@askawron](https://github.com/askawron),
   [\#21](https://github.com/gvelasq/tidytab/issues/21)).
