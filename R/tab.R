@@ -126,7 +126,7 @@ ftab <- function(x, ..., m = TRUE) {
     if (rlang::is_atomic(x) == TRUE) {
       x <- tibble::enframe(x, name = NULL)
       x <- dplyr::count(x, .data[["value"]])
-      x <- dplyr::rename(x, !!x_name := .data[["value"]], Freq. = .data[["n"]])
+      x <- dplyr::rename(x, !!x_name := tidyselect::all_of("value"), Freq. = tidyselect::all_of("n"))
     }
   } else {
     vars <- lapply(vars, rlang::env_bury, !!!helpers)
