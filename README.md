@@ -150,6 +150,22 @@ mtcars |> tab1(cyl, gear)
 
 # tab2() displays two-way tables for all variable combinations
 mtcars |> tab2(cyl, gear, am)
+#> Warning: `cross2()` was deprecated in purrr 1.0.0.
+#> ℹ Please use `tidyr::expand_grid()` instead.
+#> ℹ See <https://github.com/tidyverse/purrr/issues/768>.
+#> ℹ The deprecated feature was likely used in the tidytab package.
+#>   Please report the issue at <https://github.com/gvelasq/tidytab/issues>.
+#> This warning is displayed once every 8 hours.
+#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+#> generated.
+#> Warning: `cross()` was deprecated in purrr 1.0.0.
+#> ℹ Please use `tidyr::expand_grid()` instead.
+#> ℹ See <https://github.com/tidyverse/purrr/issues/768>.
+#> ℹ The deprecated feature was likely used in the purrr package.
+#>   Please report the issue at <https://github.com/tidyverse/purrr/issues>.
+#> This warning is displayed once every 8 hours.
+#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+#> generated.
 #>            │      gear                       │           
 #>        cyl │         3          4          5 │     Total 
 #> ───────────┼─────────────────────────────────┼──────────
@@ -194,3 +210,108 @@ Please note that the tidytab project is released with a [Contributor
 Code of
 Conduct](https://gvelasq.github.io/tidytab/CODE_OF_CONDUCT.html). By
 contributing to this project, you agree to abide by its terms.
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+
+<!-- prettier-ignore-start -->
+
+<!-- markdownlint-disable -->
+
+All contributions to this project are gratefully acknowledged using the
+[`allcontributors` package](https://github.com/ropensci/allcontributors)
+following the [all-contributors](https://allcontributors.org)
+specification. Contributions of any kind are welcome!
+
+### Code
+
+<table>
+
+<tr>
+
+<td align="center">
+
+<a href="https://github.com/gvelasq">
+<img src="https://avatars.githubusercontent.com/u/20712598?v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/gvelasq/tidytab/commits?author=gvelasq">gvelasq</a>
+</td>
+
+<td align="center">
+
+<a href="https://github.com/askawron">
+<img src="https://avatars.githubusercontent.com/u/128433085?v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/gvelasq/tidytab/commits?author=askawron">askawron</a>
+</td>
+
+<td align="center">
+
+<a href="https://github.com/ramongss">
+<img src="https://avatars.githubusercontent.com/u/47225177?v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/gvelasq/tidytab/commits?author=ramongss">ramongss</a>
+</td>
+
+</tr>
+
+</table>
+
+### Issue Authors
+
+<table>
+
+<tr>
+
+<td align="center">
+
+<a href="https://github.com/fkohrt">
+<img src="https://avatars.githubusercontent.com/u/12914806?v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/gvelasq/tidytab/issues?q=is%3Aissue+author%3Afkohrt">fkohrt</a>
+</td>
+
+<td align="center">
+
+<a href="https://github.com/zhizhongpu">
+<img src="https://avatars.githubusercontent.com/u/84325421?u=762ebb2942d556c47b95a1840455edac00c75dd7&v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/gvelasq/tidytab/issues?q=is%3Aissue+author%3Azhizhongpu">zhizhongpu</a>
+</td>
+
+<td align="center">
+
+<a href="https://github.com/theshiniss">
+<img src="https://avatars.githubusercontent.com/u/122404801?u=3f42993ddd595afb03bd2acb2264bb08b55b0a9f&v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/gvelasq/tidytab/issues?q=is%3Aissue+author%3Atheshiniss">theshiniss</a>
+</td>
+
+</tr>
+
+</table>
+
+### Issue Contributors
+
+<table>
+
+<tr>
+
+<td align="center">
+
+<a href="https://github.com/lhdjung">
+<img src="https://avatars.githubusercontent.com/u/71007825?u=d4103f66820f6a02c5838dda3aeb7e6b7dc8cb62&v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/gvelasq/tidytab/issues?q=is%3Aissue+commenter%3Alhdjung">lhdjung</a>
+</td>
+
+</tr>
+
+</table>
+
+<!-- markdownlint-enable -->
+
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
