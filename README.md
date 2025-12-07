@@ -150,22 +150,6 @@ mtcars |> tab1(cyl, gear)
 
 # tab2() displays two-way tables for all variable combinations
 mtcars |> tab2(cyl, gear, am)
-#> Warning: `cross2()` was deprecated in purrr 1.0.0.
-#> ℹ Please use `tidyr::expand_grid()` instead.
-#> ℹ See <https://github.com/tidyverse/purrr/issues/768>.
-#> ℹ The deprecated feature was likely used in the tidytab package.
-#>   Please report the issue at <https://github.com/gvelasq/tidytab/issues>.
-#> This warning is displayed once every 8 hours.
-#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-#> generated.
-#> Warning: `cross()` was deprecated in purrr 1.0.0.
-#> ℹ Please use `tidyr::expand_grid()` instead.
-#> ℹ See <https://github.com/tidyverse/purrr/issues/768>.
-#> ℹ The deprecated feature was likely used in the purrr package.
-#>   Please report the issue at <https://github.com/tidyverse/purrr/issues>.
-#> This warning is displayed once every 8 hours.
-#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-#> generated.
 #>            │      gear                       │           
 #>        cyl │         3          4          5 │     Total 
 #> ───────────┼─────────────────────────────────┼──────────
