@@ -1,6 +1,6 @@
 # Changelog
 
-## tidytab (development version)
+## tidytab 0.3.0
 
 - Replaced `purr::cross2()` with
   [`tidyr::expand_grid()`](https://tidyr.tidyverse.org/reference/expand_grid.html)
