@@ -7,7 +7,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/gvelasq/tidytab/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/gvelasq/tidytab/blob/v0.3.0/DESCRIPTION)
 
 Velásquez G (2025). *tidytab: Create Tables of Frequencies*. R package
 version 0.3.0, <https://github.com/gvelasq/tidytab>.
