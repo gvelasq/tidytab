@@ -1,5 +1,7 @@
 # Changelog
 
+## tidytab (development version)
+
 ## tidytab 0.2.0
 
 - Fixed deprecated use of .data in tidyselect expressions
