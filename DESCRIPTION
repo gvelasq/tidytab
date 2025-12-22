@@ -15,7 +15,6 @@ Depends:
 Imports: 
     crayon,
     dplyr,
-    grDevices,
     here,
     purrr,
     readr,
