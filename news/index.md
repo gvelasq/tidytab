@@ -2,6 +2,11 @@
 
 ## tidytab (development version)
 
+- Replaced `purr::cross2()` with
+  [`tidyr::expand_grid()`](https://tidyr.tidyverse.org/reference/expand_grid.html)
+  ([@ramongss](https://github.com/ramongss),
+  [\#24](https://github.com/gvelasq/tidytab/issues/24)).
+
 ## tidytab 0.2.0
 
 - Fixed deprecated use of .data in tidyselect expressions
