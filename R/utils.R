@@ -2,7 +2,7 @@
 #' @noRd
 #' @importFrom rlang .data := %|%
 
-globalVariables("n")
+globalVariables(c("n", "var1", "var2"))
 
 helpers <- tidyselect::vars_select_helpers
 

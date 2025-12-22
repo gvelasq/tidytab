@@ -183,12 +183,10 @@ tab2 <- function(x, ..., m = TRUE) {
     stop("tab2() must have at least two variables")
   }
   x <- dplyr::select(x, !!!varnames)
-  filter <- function(x, y) {
-    x <= y
-  }
-  tab_sequence <- purrr::cross2(seq_along(varnames), seq_along(varnames), .filter = filter)
-  for (i in seq_along(tab_sequence)) {
-    tab(x = x, !!varnames[[purrr::as_vector(tab_sequence[[i]])[2]]], !!varnames[[purrr::as_vector(tab_sequence[[i]])[1]]], m = m)
+  tab_sequence <- tidyr::expand_grid(var1 = seq_along(varnames), var2 = seq_along(varnames))
+  tab_sequence <- dplyr::filter(tab_sequence, !(var1 >= var2))
+  for (i in seq_len(nrow(tab_sequence))) {
+    tab(x = x, !!varnames[[tab_sequence[i, ][[1]]]], !!varnames[[tab_sequence[i, ][[2]]]], m = m)
     cat("\n")
   }
 }
