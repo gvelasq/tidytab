@@ -1,5 +1,7 @@
 # Changelog
 
+## tidytab (development version)
+
 ## tidytab 0.3.0
 
 - Replaced `purr::cross2()` with

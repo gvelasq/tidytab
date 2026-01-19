@@ -7,15 +7,15 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/gvelasq/tidytab/blob/v0.3.0/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/gvelasq/tidytab/blob/main/DESCRIPTION)
 
-Velásquez G (2025). *tidytab: Create Tables of Frequencies*. R package
-version 0.3.0, <https://github.com/gvelasq/tidytab>.
+Velásquez G (2026). *tidytab: Create Tables of Frequencies*. R package
+version 0.3.0.9000, <https://github.com/gvelasq/tidytab>.
 
     @Manual{,
       title = {tidytab: Create Tables of Frequencies},
       author = {Gustavo Velásquez},
-      year = {2025},
-      note = {R package version 0.3.0},
+      year = {2026},
+      note = {R package version 0.3.0.9000},
       url = {https://github.com/gvelasq/tidytab},
     }
