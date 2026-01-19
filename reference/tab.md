@@ -2,8 +2,7 @@
 
 `tab()` creates n-way tables of frequencies in the `R` console, similar
 to those created by Stata's `tabulate` function. When three or more
-variables are passed to `tab()`, only flat tables are displayed. `ta()`
-is a shortened alias for `tab()`.
+variables are passed to `tab()`, only flat tables are displayed.
 
 `ftab()` creates only flat tables of frequencies.
 
@@ -17,8 +16,6 @@ all listed variable combinations.
 
 ``` r
 tab(x, ..., m = TRUE)
-
-ta(x, ..., m = TRUE)
 
 ftab(x, ..., m = TRUE)
 
@@ -248,14 +245,4 @@ mtcars |> tab2(cyl, gear, am)
 #> ───────────┼──────────────────────┼──────────
 #>      Total │        19         13 │        32 
 #> 
-
-# ta() is a shortened alias for tab(), inspired by Stata
-mtcars |> ta(gear)
-#>        gear │      Freq.     Percent        Cum. 
-#> ────────────┼───────────────────────────────────
-#>           3 │         15        46.9        46.9 
-#>           4 │         12        37.5        84.4 
-#>           5 │          5        15.6       100.0 
-#> ────────────┼───────────────────────────────────
-#>       Total │         32       100.0            
 ```

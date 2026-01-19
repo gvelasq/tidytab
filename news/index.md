@@ -2,6 +2,10 @@
 
 ## tidytab (development version)
 
+- Removed `tidytab::ta()`. Please use
+  [`tidytab::tab()`](https://gvelasq.github.io/tidytab/reference/tab.md)
+  instead ([\#12](https://github.com/gvelasq/tidytab/issues/12)).
+
 ## tidytab 0.3.0
 
 - Replaced `purr::cross2()` with
