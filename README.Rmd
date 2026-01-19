@@ -62,9 +62,6 @@ mtcars |> tab1(cyl, gear)
 
 # tab2() displays two-way tables for all variable combinations
 mtcars |> tab2(cyl, gear, am)
-
-# ta() is a shortened alias for tab(), inspired by Stata
-mtcars |> ta(gear)
 ```
 
 ## Code of Conduct

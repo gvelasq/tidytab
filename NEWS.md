@@ -1,5 +1,7 @@
 # tidytab (development version)
 
+* Removed `tidytab::ta()`. Please use `tidytab::tab()` instead (#12).
+
 # tidytab 0.3.0
 
 * Replaced `purr::cross2()` with `tidyr::expand_grid()` (@ramongss, #24).

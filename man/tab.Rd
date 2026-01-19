@@ -2,15 +2,12 @@
 % Please edit documentation in R/tab.R
 \name{tab}
 \alias{tab}
-\alias{ta}
 \alias{ftab}
 \alias{tab1}
 \alias{tab2}
 \title{Create tables of frequencies}
 \usage{
 tab(x, ..., m = TRUE)
-
-ta(x, ..., m = TRUE)
 
 ftab(x, ..., m = TRUE)
 
@@ -29,7 +26,7 @@ tab2(x, ..., m = TRUE)
 A tibble containing a table of frequencies for the variables listed in \code{...}
 }
 \description{
-\code{tab()} creates n-way tables of frequencies in the \code{R} console, similar to those created by Stata's \code{tabulate} function. When three or more variables are passed to \code{tab()}, only flat tables are displayed. \code{ta()} is a shortened alias for \code{tab()}.
+\code{tab()} creates n-way tables of frequencies in the \code{R} console, similar to those created by Stata's \code{tabulate} function. When three or more variables are passed to \code{tab()}, only flat tables are displayed.
 
 \code{ftab()} creates only flat tables of frequencies.
 
@@ -68,9 +65,6 @@ mtcars |> tab1(cyl, gear)
 
 # tab2() displays two-way tables for all variable combinations
 mtcars |> tab2(cyl, gear, am)
-
-# ta() is a shortened alias for tab(), inspired by Stata
-mtcars |> ta(gear)
 
 }
 \seealso{
