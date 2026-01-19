@@ -3,18 +3,17 @@ library(tibble)
 library(rlang)
 context("test-tab.R")
 
-test_that("tab(), ftab(), ctab(), ta(), tab1(), and tab2() throw errors without sufficient data input", {
+test_that("tab(), ftab(), ctab(), tab1(), and tab2() throw errors without sufficient data input", {
   expect_error(tab())
   expect_error(ftab())
   expect_error(ctab())
   expect_error(ctab(mtcars, vs))
-  expect_error(ta())
   expect_error(tab1())
   expect_error(tab2())
   expect_error(tab2(mtcars, vs))
 })
 
-test_that("tab(), ftab(), ctab(), and ta() invisibly return tibbles", {
+test_that("tab(), ftab(), and ctab() invisibly return tibbles", {
   a <- mtcars
   a$vs[1] <- NA
   a$am[2] <- NA
@@ -38,14 +37,6 @@ test_that("tab(), ftab(), ctab(), and ta() invisibly return tibbles", {
   expect_true(is_tibble(ctab(mtcars, vs, am)))
 
   expect_true(is_tibble(ctab(a, vs, am, m = FALSE)))
-
-  expect_true(is_tibble(ta(mtcars$vs)))
-  expect_true(is_tibble(ta(mtcars, vs)))
-  expect_true(is_tibble(ta(mtcars, vs, am)))
-
-  expect_true(is_tibble(ta(a$vs, m = FALSE)))
-  expect_true(is_tibble(ta(a, vs, m = FALSE)))
-  expect_true(is_tibble(ta(a, vs, am, m = FALSE)))
 })
 
 test_that("tab1() and tab2() work", {

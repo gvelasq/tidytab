@@ -1,7 +1,7 @@
 #' Create tables of frequencies
 #'
 #' @description
-#' `tab()` creates n-way tables of frequencies in the `R` console, similar to those created by Stata's `tabulate` function. When three or more variables are passed to `tab()`, only flat tables are displayed. `ta()` is a shortened alias for `tab()`.
+#' `tab()` creates n-way tables of frequencies in the `R` console, similar to those created by Stata's `tabulate` function. When three or more variables are passed to `tab()`, only flat tables are displayed.
 #'
 #' `ftab()` creates only flat tables of frequencies.
 #'
@@ -9,8 +9,6 @@
 #'
 #' @usage
 #' tab(x, ..., m = TRUE)
-#'
-#' ta(x, ..., m = TRUE)
 #'
 #' ftab(x, ..., m = TRUE)
 #'
@@ -74,11 +72,7 @@
 #' # tab2() displays two-way tables for all variable combinations
 #' mtcars |> tab2(cyl, gear, am)
 #'
-#' # ta() is a shortened alias for tab(), inspired by Stata
-#' mtcars |> ta(gear)
-#'
 #' @aliases
-#' ta
 #' ftab
 #' tab1
 #' tab2
@@ -103,12 +97,6 @@ tab <- function(x, ..., m = TRUE) {
     }
   }
   invisible(df_to_return)
-}
-
-#' @export
-ta <- function(x, ..., m = TRUE) {
-  set_x_name(rlang::quo_name(rlang::enexpr(x)))
-  tab(x, ..., m = m)
 }
 
 #' @export
